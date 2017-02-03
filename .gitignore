@@ -38,3 +38,6 @@ jspm_packages
 
 # WebStorm project files
 .idea/
+
+# ignore Visual Studio Code settings
+.vscode
