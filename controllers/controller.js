@@ -5,9 +5,84 @@ var router = express.Router();
 // Import data models.
 var db = require('../models');
 
+// TODO: GET route for returning popularity.
+
 // GET route which returns the index.
 router.get('/', function (req, res) {
     res.sendFile('index.html');
+});
+
+// API GET routes.
+// Get all feeling super categories.
+router.get('/api/feeling-super-categories', function (req, res) {
+    db.FeelingSuperCategories.findAll(
+        {}
+    ).then(function (data) {
+        res.json(data);
+    });
+});
+
+// Get feeling categories by supercategory.
+router.get('/api/feeling-categories/:id', function (req, res) {
+    var FeelingSuperCategoryId = req.params.id;
+    db.FeelingCategories.findAll(
+        {
+            where: {
+                FeelingSuperCategoryId: FeelingSuperCategoryId
+            }
+        }
+    ).then(function (data) {
+        res.json(data);
+    });
+});
+
+// Get feelings by feeling category.
+router.get('/api/feelings/:id', function (req, res) {
+    var FeelingCategoryId = req.params.id;
+    db.Feelings.findAll(
+        {
+            where: {
+                FeelingCategoryId: FeelingCategoryId
+            }
+        }
+    ).then(function (data) {
+        res.json(data);
+    });
+});
+
+// Get resource categories.
+router.get('/api/resource-categories/', function (req, res) {
+    db.ResourceCategories.findAll(
+        {}
+    ).then(function (data) {
+        res.json(data);
+    });
+});
+
+// Get resources by resource category.
+router.get('/api/resources/:id', function (req, res) {
+    var ResourceCategoryId = req.params.id;
+    db.Resources.findAll(
+        {
+            where: {
+                ResourceCategoryId: ResourceCategoryId
+            }
+        }
+    ).then(function (data) {
+        res.json(data);
+    });
+});
+
+// Post the data from the transaction.
+router.post('/api/new', function (req, res) {
+    var Transaction = req.body;
+    db.Transactions.create({
+        feelingId: Transaction.feelingId,
+        resourceId: Transaction.resourceId
+    }).then(function (data) {
+        // Respond with the 'rows affected' code.
+        res.json(data);
+    });
 });
 
 // Export routes for server.js.
