@@ -35,7 +35,7 @@ app.use('/', routes);
 
 // Start listening.
 db.sequelize.sync().then(function() {
-  app.listen(port, function() {
-    console.log('listening on port ' + port);
+  app.listen(PORT, function() {
+    console.log('listening on port ' + PORT);
   });
 });
