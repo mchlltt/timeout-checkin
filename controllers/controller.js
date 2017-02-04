@@ -7,7 +7,7 @@ var db = require('../models');
 
 // GET route which returns the index.
 router.get('/', function (req, res) {
-    res.render('index');
+    res.sendFile('index.html');
 });
 
 // Export routes for server.js.
