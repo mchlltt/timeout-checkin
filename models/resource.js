@@ -1,3 +1,5 @@
+var Sequelize = require('sequelize');
+
 // Model for storing strategies that will be displayed to users
 module.exports = function(sequelize, DataTypes) {
     var Resource = sequelize.define('Resource', {
@@ -26,6 +28,16 @@ module.exports = function(sequelize, DataTypes) {
                     msg: 'Must be at least 1 character long'
                 }
             }
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         }
     }, {
         classMethods: {

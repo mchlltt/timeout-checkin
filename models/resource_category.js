@@ -1,3 +1,5 @@
+var Sequelize = require('sequelize');
+
 // Model for tracking categories chosen by the user
 module.exports = function(sequelize, DataTypes) {
     var ResourceCategory = sequelize.define('ResourceCategory', {
@@ -16,6 +18,16 @@ module.exports = function(sequelize, DataTypes) {
                     msg: 'Must be Distract, Inspire, Relax, or Cope'
                 }
             }
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         }
     }, {
         classMethods: {

@@ -1,3 +1,5 @@
+var Sequelize = require('sequelize');
+
 // Model for tracking transactions
 module.exports = function(sequelize, DataTypes) {
     var Transaction = sequelize.define('Transaction', {
@@ -6,6 +8,16 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true,
             allowNull: false,
             primaryKey: true
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         }
     }, {
         classMethods: {

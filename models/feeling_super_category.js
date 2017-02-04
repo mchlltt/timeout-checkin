@@ -1,3 +1,5 @@
+var Sequelize = require('sequelize');
+
 // the inner-most level of the feelings wheel
 module.exports = function(sequelize, DataTypes) {
     var FeelingSuperCategory = sequelize.define('FeelingSuperCategory', {
@@ -16,6 +18,16 @@ module.exports = function(sequelize, DataTypes) {
                     msg: 'Must be at least 1 character long'
                 }
             }
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         }
     }, {
         classMethods: {
