@@ -75,11 +75,11 @@ router.get('/api/resources/:id', function (req, res) {
 
 // Post the data from the transaction.
 router.post('/api/new', function (req, res) {
-    var feelingId = req.body.feelingId;
-    var resourceId = req.body.resourceId;
+    var FeelingId = req.body.FeelingId;
+    var ResourceId = req.body.ResourceId;
     db.Transaction.create({
-        feelingId: feelingId,
-        resourceId: resourceId
+        FeelingId: FeelingId,
+        ResourceId: ResourceId
     }).then(function (data) {
         // Respond with the 'rows affected' code.
         res.json(data);
