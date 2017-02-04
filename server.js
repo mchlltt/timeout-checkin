@@ -5,6 +5,7 @@ var exphbs = require('express-handlebars');
 var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var db = require('./models');
 
 // Initialize app.
 var app = express();
@@ -33,6 +34,8 @@ var routes = require('./controllers/controller.js');
 app.use('/', routes);
 
 // Start listening.
-app.listen(PORT, function() {
-    console.log('Listening on port %s', PORT);
+db.sequelize.sync().then(function() {
+  app.listen(port, function() {
+    console.log('listening on port ' + port);
+  });
 });
