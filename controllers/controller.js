@@ -15,7 +15,7 @@ router.get('/', function (req, res) {
 // API GET routes.
 // Get all feeling super categories.
 router.get('/api/feeling-super-categories', function (req, res) {
-    db.FeelingSuperCategories.findAll(
+    db.FeelingSuperCategory.findAll(
         {}
     ).then(function (data) {
         res.json(data);
@@ -25,7 +25,7 @@ router.get('/api/feeling-super-categories', function (req, res) {
 // Get feeling categories by supercategory.
 router.get('/api/feeling-categories/:id', function (req, res) {
     var FeelingSuperCategoryId = req.params.id;
-    db.FeelingCategories.findAll(
+    db.FeelingCategory.findAll(
         {
             where: {
                 FeelingSuperCategoryId: FeelingSuperCategoryId
@@ -39,7 +39,7 @@ router.get('/api/feeling-categories/:id', function (req, res) {
 // Get feelings by feeling category.
 router.get('/api/feelings/:id', function (req, res) {
     var FeelingCategoryId = req.params.id;
-    db.Feelings.findAll(
+    db.Feeling.findAll(
         {
             where: {
                 FeelingCategoryId: FeelingCategoryId
@@ -52,7 +52,7 @@ router.get('/api/feelings/:id', function (req, res) {
 
 // Get resource categories.
 router.get('/api/resource-categories/', function (req, res) {
-    db.ResourceCategories.findAll(
+    db.ResourceCategory.findAll(
         {}
     ).then(function (data) {
         res.json(data);
@@ -62,7 +62,7 @@ router.get('/api/resource-categories/', function (req, res) {
 // Get resources by resource category.
 router.get('/api/resources/:id', function (req, res) {
     var ResourceCategoryId = req.params.id;
-    db.Resources.findAll(
+    db.Resource.findAll(
         {
             where: {
                 ResourceCategoryId: ResourceCategoryId
@@ -76,7 +76,7 @@ router.get('/api/resources/:id', function (req, res) {
 // Post the data from the transaction.
 router.post('/api/new', function (req, res) {
     var Transaction = req.body;
-    db.Transactions.create({
+    db.Transaction.create({
         feelingId: Transaction.feelingId,
         resourceId: Transaction.resourceId
     }).then(function (data) {
