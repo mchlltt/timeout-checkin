@@ -10,8 +10,8 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         classMethods: {
             associate: function(models) {
-                Transaction.hasOne(models.Feeling);
-                Transaction.hasOne(models.Resource)
+                Transaction.belongsTo(models.Feeling);
+                Transaction.belongsTo(models.Resource)
             }
         }
     });
