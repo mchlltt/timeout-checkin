@@ -13,6 +13,7 @@
   <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+  <!-- NAVBAR -->
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
       <ul class="right hide-on-med-and-down">
@@ -25,84 +26,48 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">Need Finder</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">Take Time For What Matters</h5>
-      </div>
-      <div class="row center">
-        <a id="start" class="btn-large waves-effect waves-light orange">Exhale</a>
-      </div>
-      <br><br>
+  <!-- Main Section -->
 
-    </div>
-  </div>
-<!-- <div class=" carousel carousel-slider center" data-indicators="true">
-    <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2">button</a>
-    </div>
-    <div class="carousel-item red white-text" href="#one!">
-      <h1 class="header center white-text">How do you feel?</h1>
-      <div class="container">
-       <div class="input-field col s6 offset-s3">
-	    <select>
-	      <option value="" disabled selected>Choose your option</option>
-	      <option value="1">Option 1</option>
-	      <option value="2">Option 2</option>
-	      <option value="3">Option 3</option>
-	    </select>
-	  </div>
-	 </div>
-    </div>
-    <div class="carousel-item amber white-text" href="#two!">
-      <h1 class="header center white-text">Now really self-assess. Take your time.</h1>
-      <div class="container">
-       <div class="input-field col s6 offset-s3">
-	    <select>
-	      <option value="" disabled selected>Choose your option</option>
-	      <option value="1">Option 1</option>
-	      <option value="2">Option 2</option>
-	      <option value="3">Option 3</option>
-	    </select>
-	  </div>
-	 </div>
-    </div>
-    <div class="carousel-item green white-text" href="#three!">
-		<h1 class="header center white-text">Finally, let's get down to it.</h1>
-      <div class="container">
-       <div class="input-field col s6 offset-s3">
-	    <select>
-	      <option value="" disabled selected>Choose your option</option>
-	      <option value="1">Option 1</option>
-	      <option value="2">Option 2</option>
-	      <option value="3">Option 3</option>
-	    </select>
-	  </div>
-	 </div>
-    </div>
-    <div class="carousel-item blue white-text" href="#four!">
-      <h1 class="header center white-text">Pick Your Method</h1>
-      <p class="white-text">Your recommended option is: <span id="prefOption"></span></p>
-	    <div class="container">
-	      <div class=""></div>
-	      <div class=""></div>
-	      <div class=""></div>
-	      <div class=""></div>
-	    </div>
-	</div>
-</div>
- -->
-<div class="container">
   <div class="row center">
-      <div class="questions single-item blue col s8 offset-s2">
-          <div class="header center bold">your content</div>
-          <div>your content</div>
-          <div>your content</div>
+      <div class="questions single-item blue">
+        <!-- FIRST SLIDE -->
+        <div class="slide slick-carousel-item blue white-text" id="welcome-slide">
+          <div class="container">
+              <h1 class="title header center bold">Need Finder</h1>
+              <div class="row center"> 
+                  <h5 class="questionheader col s12 light">Take Time For What Matters</h5>
+              </div>
+               <div class="row center">
+                  <a id="start" class="btn-large waves-effect waves-light orange">Exhale</a>
+              </div>
+          </div>
+        </div>
+        <div>
+          <div class="slide slick-carousel-item blue white-text" id="question1-slide">
+          <div class="container">
+                <h1 class="title header center bold">Need Finder</h1>
+                          <form class="center" action="#">
+                                <div class="center">
+                                    <input name="group1" type="radio" id="pick1" class="userInput" data-name="" />
+                                    <label class="white-text" for="pick1">Emotion1</label>
+                  
+                                    <input name="group1" type="radio" id="pick2" class="userInput" data-name="" />
+                                    <label class="white-text" for="pick2">Emotion2</label>
+                              
+                                    <input name="group1" type="radio" id="pick3" class="userInput" data-name="" />
+                                    <label class="white-text" for="pick3">Emotion3</label>
+                                </div>
+                            </form>
+            </div>
+            </div>
+        </div>
+        <!-- Next Section -->
+          <div class="slide">your content</div>
       </div>
   </div>
-</div>
+
+           
+    <!-- Slick carousel ends here -->
 
   <nav>
     <div class="nav-wrapper col s8 offset-s2">
