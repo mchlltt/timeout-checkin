@@ -13,7 +13,19 @@ module.exports = function(app) {
 
     // GET route which returns the index.
     app.get('/', function(req, res) {
-        res.render("index");
+        var questions = {};
+        db.FeelingSuperCategory.findAll({}).then(function(data) {
+            return questions.feelingSuperCategories = data;
+        }).then(function() {
+            return db.FeelingCategory.findAll({}).then(function(data) {
+                return questions.feelingCategories = data;
+            });
+        }).then(function() {
+            db.Feeling.findAll({}).then(function(data) {
+                questions.feelings = data;
+                res.render('index', questions)
+            });
+        });
     });
 
     // API GET routes.

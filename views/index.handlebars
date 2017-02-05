@@ -13,27 +13,48 @@
                 </div>
             </div>
         </div>
-        <div>
-            <div class="slide slick-carousel-item blue white-text" id="question1-slide">
-                <div class="container">
-                    <h1 class="title header center bold">Need Finder</h1>
-                    <form class="center" action="#">
-                        <div class="center">
-                            <input name="group1" type="radio" id="pick1" class="userInput" data-name="" />
-                            <label class="white-text" for="pick1">Emotion1</label>
-            
-                            <input name="group1" type="radio" id="pick2" class="userInput" data-name="" />
-                            <label class="white-text" for="pick2">Emotion2</label>
-                        
-                            <input name="group1" type="radio" id="pick3" class="userInput" data-name="" />
-                            <label class="white-text" for="pick3">Emotion3</label>
-                        </div>
-                    </form>
-                </div>
+        <!-- feeling super category selection -->
+        <div class="slide slick-carousel-item blue" id="super-categories-slide">
+            <div class="container">
+                <h1 class="title header center bold white-text">Need Finder</h1>
+                <form class="center" action="#">
+                    <select name="super-category" id="super-category" class="browser-default">
+                        {{#each feelingSuperCategories}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                        <label class="white-text" for="super-category">Feeling</label>
+                    </select>
+                </form>
             </div>
         </div>
-        <!-- Next Section -->
-        <div class="slide">your content</div>
+        <!-- feeling category selection -->
+        <div class="slide slick-carousel-item blue" id="categories-slide">
+            <div class="container">
+                <h1 class="title header center bold white-text">Need Finder</h1>
+                <form class="center" action="#">
+                    <select name="category" id="category" class="browser-default">
+                        {{#each feelingCategories}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                        <label class="white-text" for="category">Feeling</label>
+                    </select>
+                </form>
+            </div>
+        </div>
+        <!-- feeling selection -->
+        <div class="slide slick-carousel-item blue" id="feelings-slide">
+            <div class="container">
+                <h1 class="title header center bold white-text">Need Finder</h1>
+                <form class="center" action="#">
+                    <select name="feeling" id="feeling" class="browser-default">
+                        {{#each feelings}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                        <label class="white-text" for="feeling">Feeling</label>
+                    </select>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Slick carousel ends here -->
