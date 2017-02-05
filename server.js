@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var PORT = process.env.PORT || 3000;
 
 // Set handlebars as view engine.
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // Favicon
@@ -30,12 +30,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 
 // Import routes and give the server access to them.
-var routes = require('./controllers/controller.js');
-app.use('/', routes);
+require('./controllers/controller.js')(app);
 
 // Start listening.
 db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log('listening on port ' + PORT);
-  });
+    app.listen(PORT, function() {
+        console.log('listening on port ' + PORT);
+    });
 });
