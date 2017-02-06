@@ -102,6 +102,19 @@ module.exports = function (app) {
         //Run Third party API Request for Video Requires two Parts
         res.json(VIDEO_ID);
     });
+    //New York Times API - Most Popular Under Health
+    app.get('/api/resource-categories/news', function (req, res) {
+        request.get({
+            url: "https://api.nytimes.com/svc/mostpopular/v2/mostviewed/Health/30.json",
+            qs: {
+                'api-key': "cf143926ab5c4ca3b786083109a5d006"
+            },
+        }, function (err, response, body) {
+            body = JSON.parse(body);
+            console.log(body);
+            res.json(body);
+        });
+    });
     // Post the data from the transaction.
     app.post('/api/new', function (req, res) {
         var FeelingId = req.body.FeelingId;
