@@ -1,3 +1,5 @@
+USE needs_db;
+
 insert into FeelingSuperCategories (name)
 values ('angry'),
 	   ('bad'),
