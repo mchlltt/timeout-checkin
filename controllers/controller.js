@@ -14,8 +14,15 @@ module.exports = function(app) {
 
     // GET route which returns the index.
     app.get('/', function(req, res) {
+        var questions = {};
         db.FeelingSuperCategory.findAll({}).then(function(data) {
-            res.render('index', { feelingSuperCategories: data });
+            questions.feelingSuperCategories = data;
+            return;
+        }).then(function() {
+            db.ResourceCategory.findAll({}).then(function(data) {
+                questions.resourceCategories = data;
+                res.render('index', questions);
+            });
         });
     });
 
