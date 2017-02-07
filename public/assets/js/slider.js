@@ -1,7 +1,7 @@
-$('#start-button').on('click', function () {
+$('#start-button').on('click', function() {
     $('.questions').slick('slickNext');
 });
-$('#super-category-submit').on('click', function () {
+$('#super-category-submit').on('click', function() {
     var selection = $('input:radio[name=super-category]:checked').val();
     if (selection === undefined) {
         return;
@@ -21,7 +21,7 @@ $('#super-category-submit').on('click', function () {
     );
 
 });
-$('#category-submit').on('click', function () {
+$('#category-submit').on('click', function() {
     var selection = $('input:radio[name=category]:checked').val();
     if (selection === undefined) {
         return;
@@ -40,27 +40,12 @@ $('#category-submit').on('click', function () {
         }
     );
 });
-$('#feeling-submit').on('click', function () {
+
+$('#feeling-submit').on('click', function() {
     var selection = $('input:radio[name=feeling]:checked').val();
     if (selection === undefined) {
         return;
     }
-
-$('#resource-category-submit').on('click', function () {
-    var selection = $('input:radio[name=resource]:checked').val();
-    if (selection === undefined) {
-        return;
-    }
-    $.get('/api/resource-category/' + selection).done(function (data) {
-        console.log(data);
-        if (selection === 'inspire') {
-            $('#resTitle').html('<h1 class="resMain">' + data.name + '</h1>');
-            $('#resContent').html('<h1 class="resQuote">' + data.content + '</h1>');
-        } else if (selection === 'relax') {
-            $('#resTitle').html('<h1 class="resMain">' + data.name + '</h1>');
-            $('#resContent').html('<iframe width="420" height="315" src = "https://www.youtube.com/embed/' + data.content + '&loop=1" > < /iframe>');
-        } else if (selection === 'cope') {
-            $('#resTitle').html('<h1 class="resMain">' + data + '</h1>');
 
     $.get('/api/resource-category-popularity/' + selection).done(
         function(data) {
@@ -70,9 +55,8 @@ $('#resource-category-submit').on('click', function () {
 
             $('.questions').slick('slickNext');
         }
-    });
+    );
 });
-
 
 $('#resource-category-submit').on('click', function() {
     var selection = $('input:radio[name=resource-category]:checked').val();
@@ -85,7 +69,17 @@ $('#resource-category-submit').on('click', function() {
         var keys = Object.keys(data);
         key = Math.ceil(Math.random() * keys.length - 1);
         resource = data[key].id;
-        $('#resources').append('<h2>' + data[key].name + '</h2><h3>' + data[key].content + '</h3>');
+        if (selection === '3') {
+            $('#resTitle').html('<h1 class="resMain">' + data[key].name + '</h1>');
+            $('#resContent').html('<h1 class="resQuote">' + data[key].content + '</h1>');
+        } else if (selection === '1') {
+            $('#resTitle').html('<h1 class="resMain">' + data[key].name + '</h1>');
+            $('#resContent').html('<iframe width="420" height="315" src = "https://www.youtube.com/embed/' + data[key].content + '&loop=1" > < /iframe>');
+        } else if (selection === '4') {
+            $('#resTitle').html('<h1 class="resMain">' + data[key].name + '</h1>');
+        } else {
+            $('#resources').append('<h2>' + data[key].name + '</h2><h3>' + data[key].content + '</h3>');
+        }
         $('.questions').slick('slickNext');
     }).done(function() {
         $.post('/api/new', { FeelingId: feelingSelection, ResourceId: resource }, function(data) {
@@ -93,4 +87,3 @@ $('#resource-category-submit').on('click', function() {
         });
     });
 });
-
