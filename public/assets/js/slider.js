@@ -27,7 +27,6 @@ $('#category-submit').on('click', function() {
     }
     $.get('/api/feelings/' + selection).done(
         function(data) {
-            console.log(data);
             // Use the data to generate the next set of options.
             data.forEach(function(datum) {
                 $('#feelings-form')
@@ -46,12 +45,25 @@ $('#feeling-submit').on('click', function() {
     }
     $.get('/api/resource-category-popularity/' + selection).done(
         function(data) {
+            for (var key in data) {
+                $('#label-' + key).append(' ' + Math.round(data[key] * 100) + '%');
+            }
             $('.questions').slick('slickNext');
         }
     );
 });
 
-/*
-    <input name="resource-category" type="radio" id="resource-category-{{id}}" />
-    <label for="resource-category-{{id}}" class="white-text">{{name}}</label>
-*/
+$('#resource-category-submit').on('click', function() {
+    var selection = $('input:radio[name=resource-category]:checked').val();
+    if (selection === undefined) {
+        return;
+    }
+    $.get('/api/resources/' + selection).done(
+        function(data) {
+            var keys = Object.keys(data);
+            var key = Math.ceil(Math.random() * keys.length - 1);
+            $('#resources').append('<h2>' + data[key].name + '</h2><h3>' + data[key].content + '</h3>');
+            $('.questions').slick('slickNext');
+        }
+    );
+});

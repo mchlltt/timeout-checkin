@@ -59,6 +59,10 @@
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#">
                     <h5 class="light white-text">Select the category of the resource you would like to get</h5>
+                    {{#each resourceCategories}}
+                        <input name="resource-category" type="radio" id="resource-category-{{id}}" value="{{id}}" />
+                        <label for="resource-category-{{id}}" class="white-text" id="label-{{id}}">{{name}}</label>
+                    {{/each}}
                 </form>
                 <div class="row center">
                     <a id="resource-category-submit" class="btn-large waves-effect waves-light orange">Exhale</a>
@@ -69,8 +73,9 @@
         <div class="slide slick-carousel-item blue" id="resource">
             <div class="container">
                 <h1 class="title header center bold white-text">Need Finder</h1>
-                <h2>{{resource.name}}</h2>
-                <h3>{{resource.content}}</h3>
+                <div id="resources">
+                    
+                </div>
             </div>
         </div>
     </div>
