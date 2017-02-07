@@ -28,8 +28,16 @@ module.exports = function(app) {
                 return;
             });
         }).then(function() {
-            db.ResourceCategory.findAll({}).then(function(data) {
-                questions.resourceCategories = data;
+            return db.ResourceCategory.findAll({}).then(function(data) {
+                return questions.resourceCategories = data;
+            });
+        }).then(function() {
+            db.Resource.findOne({
+                where: {
+                    id: 1
+                }
+            }).then(function(data) {
+                questions.resource = data;
                 res.render('index', questions);
             });
         });
