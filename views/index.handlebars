@@ -6,34 +6,77 @@
             <div class="container">
                 <h1 class="title header center bold">Need Finder</h1>
                 <div class="row center"> 
-                    <h5 class="questionheader col s12 light">Take Time For What Matters</h5>
+                    <h5 class="light">Take Time For What Matters</h5>
                 </div>
                 <div class="row center">
                     <a id="start" class="btn-large waves-effect waves-light orange">Exhale</a>
                 </div>
             </div>
         </div>
-        <div>
-            <div class="slide slick-carousel-item blue white-text" id="question1-slide">
-                <div class="container">
-                    <h1 class="title header center bold">Need Finder</h1>
-                    <form class="center" action="#">
-                        <div class="center">
-                            <input name="group1" type="radio" id="pick1" class="userInput" data-name="" />
-                            <label class="white-text" for="pick1">Emotion1</label>
-            
-                            <input name="group1" type="radio" id="pick2" class="userInput" data-name="" />
-                            <label class="white-text" for="pick2">Emotion2</label>
-                        
-                            <input name="group1" type="radio" id="pick3" class="userInput" data-name="" />
-                            <label class="white-text" for="pick3">Emotion3</label>
-                        </div>
-                    </form>
-                </div>
+        <!-- feeling super category selection -->
+        <div class="slide slick-carousel-item blue" id="super-categories-slide">
+            <div class="container">
+                <h1 class="title header center bold white-text">Need Finder</h1>
+                <form class="center" action="#">
+                    <h5 class="light white-text">Please select how you are feeling right now</h5>
+                    <select name="super-category" id="super-category" class="browser-default">
+                        {{#each feelingSuperCategories}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </form>
             </div>
         </div>
-        <!-- Next Section -->
-        <div class="slide">your content</div>
+        <!-- feeling category selection -->
+        <div class="slide slick-carousel-item blue" id="categories-slide">
+            <div class="container">
+                <h1 class="title header center bold white-text">Need Finder</h1>
+                <form class="center" action="#">
+                    <h5 class="light white-text">Please narrow down how you are feeling right now</h5>
+                    <select name="category" id="category" class="browser-default">
+                        {{#each feelingCategories}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </form>
+            </div>
+        </div>
+        <!-- feeling selection -->
+        <div class="slide slick-carousel-item blue" id="feelings-slide">
+            <div class="container">
+                <h1 class="title header center bold white-text">Need Finder</h1>
+                <form class="center" action="#">
+                    <h5 class="light white-text">Finally, select the feeling that best describes how you are feeling right now</h5>
+                    <select name="feeling" id="feeling" class="browser-default">
+                        {{#each feelings}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </form>
+            </div>
+        </div>
+        <!-- resource category selection -->
+        <div class="slide slick-carousel-item blue" id="resource-category">
+            <div class="container">
+                <h1 class="title header center bold white-text">Need Finder</h1>
+                <form class="center" action="#">
+                    <h5 class="light white-text">Select the category of the resource you would like to get</h5>
+                    <select name="feeling" id="resource-category" class="browser-default">
+                        {{#each resourceCategories}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </form>
+            </div>
+        </div>
+        <!-- resource -->
+        <div class="slide slick-carousel-item blue" id="resource">
+            <div class="container">
+                <h1 class="title header center bold white-text">Need Finder</h1>
+                <h2>{{resource.name}}</h2>
+                <h3>{{resource.content}}</h3>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Slick carousel ends here -->

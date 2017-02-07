@@ -6,13 +6,44 @@ module.exports = function (app) {
     // Import popularity service
     var popularityService = require('./popularity_service');
     // GET route for returning popularity.
-    app.get('/api/resource-category-popularity/:feeling_id', function (req, res) {
-        // object of resource category ids as keys and popularity (in decimal) as values
+
+    app.get('/api/resource-category-popularity/:feeling_id', function(req, res) {
+        // returns object of resource category ids as keys and popularity (in decimal) as values
+
         popularityService(req, res, db);
     });
     // GET route which returns the index.
-    app.get('/', function (req, res) {
-        res.render("index");
+
+    app.get('/', function(req, res) {
+        var questions = {};
+        db.FeelingSuperCategory.findAll({}).then(function(data) {
+            questions.feelingSuperCategories = data;
+            return;
+        }).then(function() {
+            return db.FeelingCategory.findAll({}).then(function(data) {
+                questions.feelingCategories = data;
+                return;
+            });
+        }).then(function() {
+            return db.Feeling.findAll({}).then(function(data) {
+                questions.feelings = data;
+                return;
+            });
+        }).then(function() {
+            return db.ResourceCategory.findAll({}).then(function(data) {
+                return questions.resourceCategories = data;
+            });
+        }).then(function() {
+            db.Resource.findOne({
+                where: {
+                    id: 1
+                }
+            }).then(function(data) {
+                questions.resource = data;
+                res.render('index', questions);
+            });
+        });
+
     });
     // API GET routes.
     // Get all feeling super categories.
