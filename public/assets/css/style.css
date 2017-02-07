@@ -47,3 +47,7 @@ label {
     font-size: 28px;
     margin: 10px;
 }
+
+body {
+    overflow-x: hidden;
+}
