@@ -15,15 +15,22 @@ module.exports = function(app) {
     app.get('/', function(req, res) {
         var questions = {};
         db.FeelingSuperCategory.findAll({}).then(function(data) {
-            return questions.feelingSuperCategories = data;
+            questions.feelingSuperCategories = data;
+            return;
         }).then(function() {
             return db.FeelingCategory.findAll({}).then(function(data) {
-                return questions.feelingCategories = data;
+                questions.feelingCategories = data;
+                return;
             });
         }).then(function() {
-            db.Feeling.findAll({}).then(function(data) {
+            return db.Feeling.findAll({}).then(function(data) {
                 questions.feelings = data;
-                res.render('index', questions)
+                return;
+            });
+        }).then(function() {
+            db.ResourceCategory.findAll({}).then(function(data) {
+                questions.resourceCategories = data;
+                res.render('index', questions);
             });
         });
     });

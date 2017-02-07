@@ -18,11 +18,11 @@
             <div class="container">
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#">
+                    <h5 class="questionheader col s12 white-text">Please select how you are feeling right now</h5>
                     <select name="super-category" id="super-category" class="browser-default">
                         {{#each feelingSuperCategories}}
                             <option value="{{id}}">{{name}}</option>
                         {{/each}}
-                        <label class="white-text" for="super-category">Feeling</label>
                     </select>
                 </form>
             </div>
@@ -32,11 +32,11 @@
             <div class="container">
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#">
+                    <h5 class="questionheader col s12 white-text">Please narrow down how you are feeling right now</h5>
                     <select name="category" id="category" class="browser-default">
                         {{#each feelingCategories}}
                             <option value="{{id}}">{{name}}</option>
                         {{/each}}
-                        <label class="white-text" for="category">Feeling</label>
                     </select>
                 </form>
             </div>
@@ -46,8 +46,23 @@
             <div class="container">
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#">
+                    <h5 class="questionheader col s12 white-text">Finally, select the feeling that best describes how you are feeling right now</h5>
                     <select name="feeling" id="feeling" class="browser-default">
                         {{#each feelings}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </form>
+            </div>
+        </div>
+        <!-- resource category selection -->
+        <div class="slide slick-carousel-item blue" id="feelings-slide">
+            <div class="container">
+                <h1 class="title header center bold white-text">Need Finder</h1>
+                <form class="center" action="#">
+                    <h5 class="questionheader col s12 white-text">Select the category of the resource you would like to get</h5>
+                    <select name="feeling" id="feeling" class="browser-default">
+                        {{#each resourceCategories}}
                             <option value="{{id}}">{{name}}</option>
                         {{/each}}
                         <label class="white-text" for="feeling">Feeling</label>
