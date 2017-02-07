@@ -6,41 +6,48 @@ module.exports = function (app) {
     // Import popularity service
     var popularityService = require('./popularity_service');
     // GET route for returning popularity.
-
-    app.get('/api/resource-category-popularity/:feeling_id', function(req, res) {
+    app.get('/api/resource-category-popularity/:feeling_id', function (req, res) {
         // returns object of resource category ids as keys and popularity (in decimal) as values
-
         popularityService(req, res, db);
     });
-    // GET route which returns the index.
-
-    app.get('/', function(req, res) {
+    app.get('/', function (req, res) {
         var questions = {};
-        db.FeelingSuperCategory.findAll({}).then(function(data) {
+        db.FeelingSuperCategory.findAll({}).then(function (data) {
             questions.feelingSuperCategories = data;
+<<<<<<< HEAD
+            return;
+        }).then(function () {
+            return db.FeelingCategory.findAll({}).then(function (data) {
+=======
         }).then(function() {
             return db.FeelingCategory.findAll({}).then(function(data) {
+>>>>>>> 0962cec252268318378c30743ef44316180b8245
                 questions.feelingCategories = data;
             });
-        }).then(function() {
-            return db.Feeling.findAll({}).then(function(data) {
+        }).then(function () {
+            return db.Feeling.findAll({}).then(function (data) {
                 questions.feelings = data;
             });
+<<<<<<< HEAD
+        }).then(function () {
+            return db.ResourceCategory.findAll({}).then(function (data) {
+                return questions.resourceCategories = data;
+=======
         }).then(function() {
             return db.ResourceCategory.findAll({}).then(function(data) {
                 questions.resourceCategories = data;
+>>>>>>> 0962cec252268318378c30743ef44316180b8245
             });
-        }).then(function() {
+        }).then(function () {
             db.Resource.findOne({
                 where: {
                     id: 1
                 }
-            }).then(function(data) {
+            }).then(function (data) {
                 questions.resource = data;
                 res.render('index', questions);
             });
         });
-
     });
 
     // API GET routes.
@@ -156,7 +163,6 @@ module.exports = function (app) {
         }).then(function (data) {
             // Respond with the 'rows affected' code.
             res.json(data);
-
         });
     });
 };
