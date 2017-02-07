@@ -9,3 +9,43 @@
 .questions {
     height: 400px;
 }
+
+label::before {
+    display: none;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"]:checked + label:before,
+[type="radio"].with-gap:checked + label:after,
+[type="radio"].with-gap:checked + label:before {
+    display: none;
+    /*background-color: #ff9800;*/
+    /*border: 2px solid #ff9800;*/
+}
+
+input[type="radio"]:checked + label {
+    color: #ff9800 !important;
+}
+
+label {
+    padding-left: 0 !important;
+}
+
+.slick-carousel-item:focus {
+    outline: none;
+}
+
+.options {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px;
+    flex-flow: wrap;
+    max-width: 400px;
+}
+
+[type="radio"]:not(:checked) + label,
+[type="radio"]:checked + label {
+    font-size: 28px;
+    margin: 10px;
+}

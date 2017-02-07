@@ -9,9 +9,10 @@ $('#super-category-submit').on('click', function() {
     }
     $.get('/api/feeling-categories/' + selection).done(
         function(data) {
+            $('#categories-options').empty();
             // Use the data to generate the next set of options.
             data.forEach(function(datum) {
-                $('#categories-form')
+                $('#categories-options')
                     .append('<input name="category" type="radio" id="category-' + datum.id + '" value="' + datum.id + '" />')
                     .append('<label for="category-' + datum.id + '" class="white-text">' + datum.name + '</label>')
             });
@@ -27,9 +28,11 @@ $('#category-submit').on('click', function() {
     }
     $.get('/api/feelings/' + selection).done(
         function(data) {
+            $('#feelings-options').empty();
+            console.log(data);
             // Use the data to generate the next set of options.
             data.forEach(function(datum) {
-                $('#feelings-form')
+                $('#feelings-options')
                     .append('<input name="feeling" type="radio" id="feeling-' + datum.id + '" value="' + datum.id + '" />')
                     .append('<label for="feeling-' + datum.id + '" class="white-text">' + datum.name + '</label>')
             });
