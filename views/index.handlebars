@@ -1,5 +1,5 @@
 <!-- Main Section -->
-<div class="row center">
+<main class="row center">
     <div class="questions single-item blue">
         <!-- FIRST SLIDE -->
         <div class="slide slick-carousel-item blue white-text" id="welcome-slide">
@@ -19,10 +19,12 @@
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#">
                     <h5 class="light white-text">Please select how you are feeling right now</h5>
+                    <div class="options" id="super-categories-options">
                     {{#each feelingSuperCategories}}
                         <input name="super-category" type="radio" id="super-category-{{id}}" value="{{id}}" />
                         <label for="super-category-{{id}}" class="white-text">{{name}}</label>
                     {{/each}}
+                    </div>
                 </form>
                 <div class="row center">
                     <a id="super-category-submit" class="btn-large waves-effect waves-light orange">Exhale</a>
@@ -35,6 +37,7 @@
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#" id="categories-form">
                     <h5 class="light white-text">Please narrow down how you are feeling right now</h5>
+                    <div class="options" id="categories-options"></div>
                 </form>
                 <div class="row center">
                     <a id="category-submit" class="btn-large waves-effect waves-light orange">Exhale</a>
@@ -47,6 +50,7 @@
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#" id="feelings-form">
                     <h5 class="light white-text">Finally, select the feeling that best describes how you are feeling right now</h5>
+                    <div class="options" id="feelings-options"></div>
                 </form>
                 <div class="row center">
                     <a id="feeling-submit" class="btn-large waves-effect waves-light orange">Exhale</a>
@@ -59,10 +63,12 @@
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#">
                     <h5 class="light white-text">Select the category of the resource you would like to get</h5>
+                    <div class="options" id="resource-categories-options">
                     {{#each resourceCategories}}
                         <input name="resource-category" type="radio" id="resource-category-{{id}}" value="{{id}}" />
                         <label for="resource-category-{{id}}" class="white-text" id="label-{{id}}">{{name}}</label>
                     {{/each}}
+                    </div>
                 </form>
                 <div class="row center">
                     <a id="resource-category-submit" class="btn-large waves-effect waves-light orange">Exhale</a>
@@ -79,5 +85,5 @@
             </div>
         </div>
     </div>
-</div>
+</main>
 <!-- Slick carousel ends here -->
