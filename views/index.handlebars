@@ -19,11 +19,10 @@
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#">
                     <h5 class="light white-text">Please select how you are feeling right now</h5>
-                    <select name="super-category" id="super-category" class="browser-default">
-                        {{#each feelingSuperCategories}}
-                            <option value="{{id}}">{{name}}</option>
-                        {{/each}}
-                    </select>
+                    {{#each feelingSuperCategories}}
+                        <input name="super-category" type="radio" id="super-category-{{id}}" />
+                        <label for="super-category-{{id}}" class="white-text">{{name}}</label>
+                    {{/each}}
                 </form>
             </div>
         </div>
@@ -33,11 +32,10 @@
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#">
                     <h5 class="light white-text">Please narrow down how you are feeling right now</h5>
-                    <select name="category" id="category" class="browser-default">
-                        {{#each feelingCategories}}
-                            <option value="{{id}}">{{name}}</option>
-                        {{/each}}
-                    </select>
+                    {{#each feelingCategories}}
+                        <input name="category" type="radio" id="category-{{id}}" />
+                        <label for="category-{{id}}" class="white-text">{{name}}</label>
+                    {{/each}}
                 </form>
             </div>
         </div>
@@ -47,11 +45,10 @@
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#">
                     <h5 class="light white-text">Finally, select the feeling that best describes how you are feeling right now</h5>
-                    <select name="feeling" id="feeling" class="browser-default">
-                        {{#each feelings}}
-                            <option value="{{id}}">{{name}}</option>
-                        {{/each}}
-                    </select>
+                    {{#each feelings}}
+                        <input name="feeling" type="radio" id="feeling-{{id}}" />
+                        <label for="feeling-{{id}}" class="white-text">{{name}}</label>
+                    {{/each}}
                 </form>
             </div>
         </div>
@@ -61,11 +58,10 @@
                 <h1 class="title header center bold white-text">Need Finder</h1>
                 <form class="center" action="#">
                     <h5 class="light white-text">Select the category of the resource you would like to get</h5>
-                    <select name="feeling" id="resource-category" class="browser-default">
-                        {{#each resourceCategories}}
-                            <option value="{{id}}">{{name}}</option>
-                        {{/each}}
-                    </select>
+                    {{#each resourceCategories}}
+                        <input name="resource-category" type="radio" id="resource-category-{{id}}" />
+                        <label for="resource-category-{{id}}" class="white-text">{{name}}</label>
+                    {{/each}}
                 </form>
             </div>
         </div>
