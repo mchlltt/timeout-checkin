@@ -83,8 +83,9 @@ $('#resource-category-submit').on('click', function() {
     var resource;
     $.get('/api/resources/' + selection, function(data) {
         var keys = Object.keys(data);
-        resource = Math.ceil(Math.random() * keys.length - 1);
-        $('#resources').append('<h2>' + data[resource].name + '</h2><h3>' + data[resource].content + '</h3>');
+        key = Math.ceil(Math.random() * keys.length - 1);
+        resource = data[key].id;
+        $('#resources').append('<h2>' + data[key].name + '</h2><h3>' + data[key].content + '</h3>');
         $('.questions').slick('slickNext');
     }).done(function() {
         $.post('/api/new', { FeelingId: feelingSelection, ResourceId: resource }, function(data) {
