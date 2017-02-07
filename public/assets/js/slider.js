@@ -29,7 +29,6 @@ $('#category-submit').on('click', function() {
     $.get('/api/feelings/' + selection).done(
         function(data) {
             $('#feelings-options').empty();
-            console.log(data);
             // Use the data to generate the next set of options.
             data.forEach(function(datum) {
                 $('#feelings-options')
@@ -61,12 +60,16 @@ $('#resource-category-submit').on('click', function() {
     if (selection === undefined) {
         return;
     }
-    $.get('/api/resources/' + selection).done(
-        function(data) {
-            var keys = Object.keys(data);
-            var key = Math.ceil(Math.random() * keys.length - 1);
-            $('#resources').append('<h2>' + data[key].name + '</h2><h3>' + data[key].content + '</h3>');
-            $('.questions').slick('slickNext');
-        }
-    );
+    var feelingSelection = $('input:radio[name=feeling]:checked').val();
+    var resource;
+    $.get('/api/resources/' + selection, function(data) {
+        var keys = Object.keys(data);
+        resource = Math.ceil(Math.random() * keys.length - 1);
+        $('#resources').append('<h2>' + data[resource].name + '</h2><h3>' + data[resource].content + '</h3>');
+        $('.questions').slick('slickNext');
+    }).done(function() {
+        $.post('/api/new', { FeelingId: feelingSelection, ResourceId: resource }, function(data) {
+            console.log(data);
+        });
+    });
 });
