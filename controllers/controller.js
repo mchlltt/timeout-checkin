@@ -11,10 +11,17 @@ module.exports = function (app) {
         popularityService(req, res, db);
     });
     // GET route which returns the index.
-    app.get('/', function (req, res) {
-        db.FeelingSuperCategory.findAll({}).then(function (data) {
-            res.render('index', {
-                feelingSuperCategories: data
+
+    app.get('/', function(req, res) {
+        var questions = {};
+        db.FeelingSuperCategory.findAll({}).then(function(data) {
+            questions.feelingSuperCategories = data;
+            return;
+        }).then(function() {
+            db.ResourceCategory.findAll({}).then(function(data) {
+                questions.resourceCategories = data;
+                res.render('index', questions);
+
             });
         });
     });
