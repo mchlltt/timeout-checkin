@@ -7,7 +7,7 @@ module.exports = function(app) {
 
     // GET route for returning popularity.
     app.get('/api/resource-category-popularity/:feeling_id', function(req, res) {
-        // object of resource category ids as keys and popularity (in decimal) as values
+        // returns object of resource category ids as keys and popularity (in decimal) as values
         popularityService(req, res, db);
     });
 
