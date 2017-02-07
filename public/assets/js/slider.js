@@ -37,6 +37,24 @@ $('#feeling-submit').on('click', function () {
         $('.questions').slick('slickNext');
     });
 });
+$('#resource-category-submit').on('click', function () {
+    var selection = $('input:radio[name=resource]:checked').val();
+    if (selection === undefined) {
+        return;
+    }
+    $.get('/api/resource-category/' + selection).done(function (data) {
+        console.log(data);
+        if (selection === 'inspire') {
+            $('#resTitle').html('<h1 class="resMain">' + data.name + '</h1>');
+            $('#resContent').html('<h1 class="resQuote">' + data.content + '</h1>');
+        } else if (selection === 'relax') {
+            $('#resTitle').html('<h1 class="resMain">' + data.name + '</h1>');
+            $('#resContent').html('<iframe width="420" height="315" src = "https://www.youtube.com/embed/' + data.content + '&loop=1" > < /iframe>');
+        } else if (selection === 'cope') {
+            $('#resTitle').html('<h1 class="resMain">' + data + '</h1>');
+        }
+    });
+});
 /*
     <input name="resource-category" type="radio" id="resource-category-{{id}}" />
     <label for="resource-category-{{id}}" class="white-text">{{name}}</label>

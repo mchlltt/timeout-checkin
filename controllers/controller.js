@@ -2,79 +2,73 @@
 var db = require('../models');
 //including request for API calls
 var request = require("request");
-module.exports = function(app) {
+module.exports = function (app) {
     // Import popularity service
     var popularityService = require('./popularity_service');
     // GET route for returning popularity.
-
-    app.get('/api/resource-category-popularity/:feeling_id', function(req, res) {
+    app.get('/api/resource-category-popularity/:feeling_id', function (req, res) {
         // returns object of resource category ids as keys and popularity (in decimal) as values
         popularityService(req, res, db);
     });
-
     // GET route which returns the index.
-    app.get('/', function(req, res) {
-        db.FeelingSuperCategory.findAll({}).then(function(data) {
-            res.render('index', { feelingSuperCategories: data });
+    app.get('/', function (req, res) {
+        db.FeelingSuperCategory.findAll({}).then(function (data) {
+            res.render('index', {
+                feelingSuperCategories: data
+            });
         });
     });
-
     // API GET routes.
     // Get all feeling super categories.
-    app.get('/api/feeling-super-categories', function(req, res) {
-        db.FeelingSuperCategory.findAll({}).then(function(data) {
+    app.get('/api/feeling-super-categories', function (req, res) {
+        db.FeelingSuperCategory.findAll({}).then(function (data) {
             res.json(data);
         });
     });
-
     // Get feeling categories by supercategory.
-    app.get('/api/feeling-categories/:id', function(req, res) {
+    app.get('/api/feeling-categories/:id', function (req, res) {
         var FeelingSuperCategoryId = req.params.id;
         db.FeelingCategory.findAll({
             where: {
                 FeelingSuperCategoryId: FeelingSuperCategoryId
             }
-        }).then(function(data) {
+        }).then(function (data) {
             res.json(data);
         });
     });
-
     // Get feelings by feeling category.
-    app.get('/api/feelings/:id', function(req, res) {
+    app.get('/api/feelings/:id', function (req, res) {
         var FeelingCategoryId = req.params.id;
         db.Feeling.findAll({
             where: {
                 FeelingCategoryId: FeelingCategoryId
             }
-        }).then(function(data) {
+        }).then(function (data) {
             res.json(data);
         });
     });
-
     // Get resource categories.
-    app.get('/api/resource-categories/', function(req, res) {
-        db.ResourceCategory.findAll({}).then(function(data) {
+    app.get('/api/resource-categories/', function (req, res) {
+        db.ResourceCategory.findAll({}).then(function (data) {
             res.json(data);
         });
     });
-
     // Get resources by resource category.
-    app.get('/api/resources/:id', function(req, res) {
+    app.get('/api/resources/:id', function (req, res) {
         var ResourceCategoryId = req.params.id;
         db.Resource.findAll({
             where: {
                 ResourceCategoryId: ResourceCategoryId
             }
-        }).then(function(data) {
+        }).then(function (data) {
             res.json(data);
         });
     });
-
     //Adding test route for requesting Third Party APIs for resource categories
     // Include the request npm package, which simplifies HTTP requests
-    app.get('/api/resource-categories/quote', function(req, res) {
+    app.get('/api/resource-categories/quote', function (req, res) {
         //Run Third party API Request for Random Quotes. Documentation is available here: http://forismatic.com/en/api/
-        request('http://api.forismatic.com/api/1.0/?method=getQuote&key=&format=json&lang=en', function(error, response, body) {
+        request('http://api.forismatic.com/api/1.0/?method=getQuote&key=&format=json&lang=en', function (error, response, body) {
             // Emits callback event. If the request is successful (i.e. if the response status code is 200) 
             if (!error && response.statusCode === 200) {
                 //provides server response to request
@@ -86,8 +80,13 @@ module.exports = function(app) {
                 if (author === '') {
                     author = 'Unknown';
                 }
+                var resObj = {
+                    name: author,
+                    content: quote
+                }
+                console.log(resObj);
                 //put input in array
-                res.json([quote, author]);
+                res.json(resObj);
             } else {
                 console.log(error);
                 console.log('unable to service request');
@@ -96,12 +95,11 @@ module.exports = function(app) {
         });
     });
     //
-
     //If we decide to include a journal or text form - Can include a Sentiment API 
     //http://text-processing.com/docs/sentiment.html
     //
     //Youtube API for Meditation Videos
-    app.get('/api/resource-categories/video', function(req, res) {
+    app.get('/api/resource-categories/video', function (req, res) {
         //Step One: Get results from Youtube Search Query API needs Client Key
         // Search for a specified query.
         //using sample Video IDs in array
@@ -109,34 +107,36 @@ module.exports = function(app) {
         //Randomize Selection
         // //Step Two: Plug In Random Video ID from Search Query to create iframe on client side
         var VIDEO_ID = meditationSample[Math.floor(Math.random() * meditationSample.length)];
+        var resObj = {
+            name: "Take Some Time To Relax",
+            content: VIDEO_ID
+        };
         //Run Third party API Request for Video Requires two Parts
-        res.json(VIDEO_ID);
+        res.json(resObj);
     });
-
     //New York Times API - Most Popular Under Health
-    app.get('/api/resource-categories/news', function(req, res) {
+    app.get('/api/resource-categories/news', function (req, res) {
         request.get({
             url: 'https://api.nytimes.com/svc/mostpopular/v2/mostviewed/Health/30.json',
             qs: {
                 'api-key': 'cf143926ab5c4ca3b786083109a5d006'
             }
-        }, function(err, response, body) {
+        }, function (err, response, body) {
             body = JSON.parse(body);
             console.log(body);
             res.json(body);
         });
     });
     // Post the data from the transaction.
-    app.post('/api/new', function(req, res) {
+    app.post('/api/new', function (req, res) {
         var FeelingId = req.body.FeelingId;
         var ResourceId = req.body.ResourceId;
         db.Transaction.create({
             FeelingId: FeelingId,
             ResourceId: ResourceId
-        }).then(function(data) {
+        }).then(function (data) {
             // Respond with the 'rows affected' code.
             res.json(data);
-
         });
     });
 };
