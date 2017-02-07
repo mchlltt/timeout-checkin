@@ -6,50 +6,39 @@ module.exports = function (app) {
     // Import popularity service
     var popularityService = require('./popularity_service');
     // GET route for returning popularity.
-<<<<<<< HEAD
     app.get('/api/resource-category-popularity/:feeling_id', function (req, res) {
-        // object of resource category ids as keys and popularity (in decimal) as values
-=======
-    app.get('/api/resource-category-popularity/:feeling_id', function(req, res) {
         // returns object of resource category ids as keys and popularity (in decimal) as values
->>>>>>> c849276556f1d731603fa32044d520a3dc792570
         popularityService(req, res, db);
     });
-    // GET route which returns the index.
-<<<<<<< HEAD
     app.get('/', function (req, res) {
-        res.render("index");
-=======
-    app.get('/', function(req, res) {
         var questions = {};
-        db.FeelingSuperCategory.findAll({}).then(function(data) {
+        db.FeelingSuperCategory.findAll({}).then(function (data) {
             questions.feelingSuperCategories = data;
             return;
-        }).then(function() {
-            return db.FeelingCategory.findAll({}).then(function(data) {
+        }).then(function () {
+            return db.FeelingCategory.findAll({}).then(function (data) {
                 questions.feelingCategories = data;
                 return;
             });
-        }).then(function() {
-            return db.Feeling.findAll({}).then(function(data) {
+        }).then(function () {
+            return db.Feeling.findAll({}).then(function (data) {
                 questions.feelings = data;
                 return;
             });
-        }).then(function() {
-            return db.ResourceCategory.findAll({}).then(function(data) {
+        }).then(function () {
+            return db.ResourceCategory.findAll({}).then(function (data) {
                 return questions.resourceCategories = data;
             });
-        }).then(function() {
+        }).then(function () {
             db.Resource.findOne({
                 where: {
                     id: 1
                 }
-            }).then(function(data) {
+            }).then(function (data) {
                 questions.resource = data;
                 res.render('index', questions);
             });
         });
->>>>>>> c849276556f1d731603fa32044d520a3dc792570
     });
     // API GET routes.
     // Get all feeling super categories.
@@ -138,6 +127,19 @@ module.exports = function (app) {
         var VIDEO_ID = medRand;
         //Run Third party API Request for Video Requires two Parts
         res.json(VIDEO_ID);
+    });
+    //New York Times API - Most Popular Under Health
+    app.get('/api/resource-categories/news', function (req, res) {
+        request.get({
+            url: "https://api.nytimes.com/svc/mostpopular/v2/mostviewed/Health/30.json",
+            qs: {
+                'api-key': "cf143926ab5c4ca3b786083109a5d006"
+            },
+        }, function (err, response, body) {
+            body = JSON.parse(body);
+            console.log(body);
+            res.json(body);
+        });
     });
     // Post the data from the transaction.
     app.post('/api/new', function (req, res) {
