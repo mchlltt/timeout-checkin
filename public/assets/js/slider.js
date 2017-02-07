@@ -1,8 +1,8 @@
-$('#start').on('click', function() {
+$('#start-button').on('click', function() {
     $('.questions').slick('slickNext');
 });
 
-$('#question1-submit').on('click', function() {
+$('#super-category-submit').on('click', function() {
     var selection = $('input:radio[name=group1]:checked').data('name');
     $.get('/api/feeling-categories/' + selection).done(
         function(data) {
@@ -15,7 +15,7 @@ $('#question1-submit').on('click', function() {
 
 });
 
-$('#question2-submit').on('click', function() {
+$('#category-submit').on('click', function() {
     var selection = $('input:radio[name=group2]:checked').data('name');
     $.get('/api/feelings/' + selection).done(
         function(data) {
