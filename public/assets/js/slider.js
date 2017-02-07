@@ -33,7 +33,7 @@ $('#category-submit').on('click', function() {
             data.forEach(function(datum) {
                 $('#feelings-options')
                     .append('<input name="feeling" type="radio" id="feeling-' + datum.id + '" value="' + datum.id + '" />')
-                    .append('<label for="feeling-' + datum.id + '" class="white-text">' + datum.name + '</label>')
+                    .append('<label for="feeling-' + datum.id + '" class="white-text">' + datum.name + '</label>');
             });
             $('.questions').slick('slickNext');
         }
@@ -47,9 +47,10 @@ $('#feeling-submit').on('click', function() {
     }
     $.get('/api/resource-category-popularity/' + selection).done(
         function(data) {
-            for (var key in data) {
-                $('#label-' + key).append(' ' + Math.round(data[key] * 100) + '%');
-            }
+            Object.keys(data).forEach(function(key) {
+                $('#percentage-' + key).empty().append(' ' + Math.round(data[key] * 100) + '%');
+            });
+
             $('.questions').slick('slickNext');
         }
     );

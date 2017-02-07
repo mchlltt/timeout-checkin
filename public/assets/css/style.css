@@ -19,8 +19,6 @@ label::before {
 [type="radio"].with-gap:checked + label:after,
 [type="radio"].with-gap:checked + label:before {
     display: none;
-    /*background-color: #ff9800;*/
-    /*border: 2px solid #ff9800;*/
 }
 
 input[type="radio"]:checked + label {
