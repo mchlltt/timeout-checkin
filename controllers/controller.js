@@ -1,7 +1,7 @@
 // Import data models.
 var db = require('../models');
 //including request for API calls
-var request = require("request");
+var request = require('request');
 module.exports = function (app) {
     // Import popularity service
     var popularityService = require('./popularity_service');
@@ -18,20 +18,17 @@ module.exports = function (app) {
         var questions = {};
         db.FeelingSuperCategory.findAll({}).then(function(data) {
             questions.feelingSuperCategories = data;
-            return;
         }).then(function() {
             return db.FeelingCategory.findAll({}).then(function(data) {
                 questions.feelingCategories = data;
-                return;
             });
         }).then(function() {
             return db.Feeling.findAll({}).then(function(data) {
                 questions.feelings = data;
-                return;
             });
         }).then(function() {
             return db.ResourceCategory.findAll({}).then(function(data) {
-                return questions.resourceCategories = data;
+                questions.resourceCategories = data;
             });
         }).then(function() {
             db.Resource.findOne({
@@ -45,6 +42,7 @@ module.exports = function (app) {
         });
 
     });
+
     // API GET routes.
     // Get all feeling super categories.
     app.get('/api/feeling-super-categories', function (req, res) {
@@ -91,11 +89,12 @@ module.exports = function (app) {
             res.json(data);
         });
     });
-    //Adding test route  for requesting Third Party APIs for resource categories
+
+    //Adding test route for requesting Third Party APIs for resource categories
     // Include the request npm package, which simplifies HTTP requests
     app.get('/api/resource-categories/quote', function (req, res) {
         //Run Third party API Request for Random Quotes. Documentation is available here: http://forismatic.com/en/api/
-        request("http://api.forismatic.com/api/1.0/?method=getQuote&key=&format=json&lang=en", function (error, response, body) {
+        request('http://api.forismatic.com/api/1.0/?method=getQuote&key=&format=json&lang=en', function (error, response, body) {
             // Emits callback event. If the request is successful (i.e. if the response status code is 200) 
             if (!error && response.statusCode === 200) {
                 //provides server response to request
@@ -105,18 +104,19 @@ module.exports = function (app) {
                 var author = JSON.parse(body).quoteAuthor;
                 //API returns empty string if author could not be found, replace with Unknown
                 if (author === '') {
-                    author = "Unknown";
+                    author = 'Unknown';
                 }
                 //put input in array
                 res.json([quote, author]);
             } else {
                 console.log(error);
-                console.log("unable to service request");
+                console.log('unable to service request');
                 //could include default quote with unable to connect message
             }
         });
     });
     //
+
     //If we decide to include a journal or text form - Can include a Sentiment API 
     //http://text-processing.com/docs/sentiment.html
     //
@@ -127,19 +127,19 @@ module.exports = function (app) {
         //using sample Video IDs in array
         var meditationSample = ['PYs5zyM9zk8', 'PvdOyWKQfO8', 'apkexltdO-0'];
         //Randomize Selection
-        var medRand = meditationSample[Math.floor(Math.random() * meditationSample.length)];
         // //Step Two: Plug In Random Video ID from Search Query to create iframe on client side
-        var VIDEO_ID = medRand;
+        var VIDEO_ID = meditationSample[Math.floor(Math.random() * meditationSample.length)];
         //Run Third party API Request for Video Requires two Parts
         res.json(VIDEO_ID);
     });
+
     //New York Times API - Most Popular Under Health
     app.get('/api/resource-categories/news', function (req, res) {
         request.get({
-            url: "https://api.nytimes.com/svc/mostpopular/v2/mostviewed/Health/30.json",
+            url: 'https://api.nytimes.com/svc/mostpopular/v2/mostviewed/Health/30.json',
             qs: {
-                'api-key': "cf143926ab5c4ca3b786083109a5d006"
-            },
+                'api-key': 'cf143926ab5c4ca3b786083109a5d006'
+            }
         }, function (err, response, body) {
             body = JSON.parse(body);
             console.log(body);
