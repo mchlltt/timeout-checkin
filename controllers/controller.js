@@ -1,12 +1,25 @@
 // Import data models.
 var db = require('../models');
 //including request for API calls
-var request = require('request');
+var request = require("request");
+// Import popularity service
+var popularityService = require('./popularity_service');
 var Sequelize = require('sequelize');
 
-module.exports = function(app) {
-    // Import popularity service
-    var popularityService = require('./popularity_service');
+module.exports = function(app, passport) {
+    // define our routes
+    app.post('/register', function(req, res) {
+        db.User.register(req.body.username, req.body.password, function(err, account) {
+            if (err) {
+                console.log(err);
+                return res.json(err); //res.render('register', { account : account });
+            }
+            passport.authenticate('local')(req, res, function() {
+                res.redirect('/');
+            });
+        });
+    });
+
     // GET route for returning popularity.
     app.get('/api/resource-category-popularity/:feeling_id', function(req, res) {
         // returns object of resource category ids as keys and popularity (in decimal) as values
@@ -107,7 +120,7 @@ module.exports = function(app) {
         });
     });
 
-    app.get('*',function (req, res) {
+    app.get('*', function(req, res) {
         res.redirect('/');
     });
 };
