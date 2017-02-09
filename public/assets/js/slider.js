@@ -63,14 +63,13 @@ $('#resource-category-submit').on('click', function () {
         var resource = data[whichResult];
         ResourceId = resource.id;
 
-        $('#resource-title').text(resource.name);
-
         switch(selection) {
             case '1':
+                $('#resource-title').text(resource.name);
                 $('#resource-content').empty().append('<iframe width="300px" height="300px" src="https://www.youtube.com/embed/' + resource.content + '"></iframe>');
                 break;
             default:
-                $('#resource-content').empty().append('<h1>' + resource.content + '</h1>');
+                $('#resource-content').empty().append('<h1><a href="' + resource.content + '">' + resource.name +'</a></h1>');
                 break;
         }
 
