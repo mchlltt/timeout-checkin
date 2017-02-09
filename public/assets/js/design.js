@@ -9,7 +9,7 @@ $(document).ready(function() {
 
     $('.single-item').slick({
         dots: true,
-        infinite: true,
+        infinite: false,
         slidesToShow: 1,
         speed: 300,
         accessibility: true
