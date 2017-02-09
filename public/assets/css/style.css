@@ -104,3 +104,9 @@ html {
 * {
     font-family: Roboto, Helvetica, Arial, sans-serif;
 }
+
+.resource-container {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}

@@ -43,44 +43,47 @@ $('#feeling-submit').on('click', function () {
 });
 
 $('#resource-category-submit').on('click', function () {
-    //Empty DOM from previous Ajax Calls to account for user navigating back
-    $('#resTitle').empty();
-    $('#resContent').empty();
-    $('#resources').empty();
-    //Get Value from selection
+    // Get resource category selection.
     var selection = $('input:radio[name=resource-category]:checked').val();
-    //must select value
+
+    // Must select value
     if (selection === undefined) {
         return;
     }
-    var feelingSelection = $('input:radio[name=feeling]:checked').val();
+
     var ResourceId;
-    //Ajax request for data
+
+    // AJAX request for data
     $.get('/api/resources/' + selection, function (data) {
-        //For Our DB Selection
-        var resource = data[0]; 
+
+        // Get the length of the data returned.
+        var numberResults = data.length;
+        var whichResult = Math.floor(Math.random() * numberResults);
+
+        var resource = data[whichResult];
         ResourceId = resource.id;
-        if (selection === '3') {
-            $('#resTitle').html('<h1 class="resMain">' + resource.name + '</h1>');
-            $('#resContent').html('<h1 class="resQuote">' + resource.content + '</h1>');
-        } else if (selection === '1') {
-            $('#resTitle').html('<h1 class="resMain">' + resource.name + '</h1>');
-            $('#resContent').html('<iframe width="100%" height="100%"  src = "https://www.youtube.com/embed/' + resource.content + '" > < /iframe>');
-        } else if (selection === '4') {
-            $('#resTitle').html('<h1 class="news resMain">' + resource.title + '</h1><p class="news abstract">' + resource.abstract + '</p><h3 class="news url">' + resource.url + '</h3>');
-        } else if (selection === '2') {
-            $('#resTitle').html('<h1 class="resMain">' + resource.name + '</h1>');
-            $('#resContent').html('<h1 class="resQuote">' + resource.content + '</h1>');
-        } else {
-            $('#resources').append('<h2>' + resource.name + '</h2><h3>' + resource.content + '</h3>');
+
+        $('#resource-title').text(resource.name);
+
+        switch(selection) {
+            case '1':
+                $('#resource-content').empty().append('<iframe width="300px" height="300px" src="https://www.youtube.com/embed/' + resource.content + '"></iframe>');
+                break;
+            default:
+                $('#resource-content').empty().append('<h1>' + resource.content + '</h1>');
+                break;
         }
+
         $('.questions').slick('slickNext');
+
     }).done(function () {
+        // Get feeling ID from previous page.
+        var FeelingId = $('input:radio[name=feeling]:checked').val();
+
+        // Post resource ID and feeling ID.
         $.post('/api/new', {
-            FeelingId: feelingSelection,
+            FeelingId: FeelingId,
             ResourceId: ResourceId
-        }, function (data) {
-            console.log(data);
         });
     });
 });
