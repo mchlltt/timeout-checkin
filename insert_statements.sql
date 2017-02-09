@@ -285,8 +285,9 @@ values ('relax'),
 
 # insert resource for category relax
 insert into Resources (name, content, ResourceCategoryId)
-values ('stop, breathe, think', 'https://app.stopbreathethink.org/', 1),
-	   ('headspace', 'https://www.headspace.com/', 1);
+values ('waterfall', 'PYs5zyM9zk8', 1),
+	   ('rain', 'PvdOyWKQfO8', 1),
+	   ('flowers', 'apkexltdO-0', 1);
 	  
 # insert resource for category distract
 insert into Resources (name, content, ResourceCategoryId)

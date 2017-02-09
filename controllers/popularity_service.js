@@ -98,7 +98,7 @@ module.exports = function(req, res, db) {
             });
             for (var key in counts) {
                 if (counts.hasOwnProperty(key)) {
-                    counts[key] = counts[key] / totalCount;
+                    counts[key] /= totalCount;
                 }
             }
             res.json(counts);

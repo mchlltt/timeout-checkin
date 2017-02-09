@@ -1,7 +1,8 @@
 // Import data models.
 var db = require('../models');
 //including request for API calls
-var request = require("request");
+var request = require('request');
+
 module.exports = function (app) {
     // Import popularity service
     var popularityService = require('./popularity_service');
@@ -15,7 +16,6 @@ module.exports = function (app) {
         var questions = {};
         db.FeelingSuperCategory.findAll({}).then(function (data) {
             questions.feelingSuperCategories = data;
-            return;
         }).then(function () {
             db.ResourceCategory.findAll({}).then(function (data) {
                 questions.resourceCategories = data;
@@ -52,13 +52,15 @@ module.exports = function (app) {
             res.json(data);
         });
     });
+
     // Get resource categories.
     app.get('/api/resource-categories/', function (req, res) {
         db.ResourceCategory.findAll({}).then(function (data) {
             res.json(data);
         });
     });
-    //Get resources by resource category.
+    
+    // Get resources by resource category.
     app.get('/api/resources/:id', function (req, res) {
         var ResourceCategoryId = req.params.id;
         db.Resource.findAll({
@@ -68,28 +70,8 @@ module.exports = function (app) {
         }).then(function (data) {
             res.json(data);
         });
-        //
-        // function apiMedVid1() {
-        //     //Youtube API for Meditation Videos
-        //     //Step One: Get results from Youtube Search Query API needs Client Key
-        //     // Search for a specified query.
-        //     //using sample Video IDs in array
-        //     var meditationSample = ['PYs5zyM9zk8', 'PvdOyWKQfO8', 'apkexltdO-0'];
-        //     //Randomize Selection
-        //     // //Step Two: Plug In Random Video ID from Search Query to create iframe on client side
-        //     var VIDEO_ID = meditationSample[Math.floor(Math.random() * meditationSample.length)];
-        //     var resObj = {
-        //         name: "Take Some Time To Relax",
-        //         content: VIDEO_ID
-        //     };
-        //     //Run Third party API Request for Video Requires two Parts
-        //     res.json(resObj);
-        // }
     });
-    //
-    //If we decide to include a journal or text form - Can include a Sentiment API 
-    //http://text-processing.com/docs/sentiment.html
-    //
+
     // Post the data from the transaction.
     app.post('/api/new', function (req, res) {
         var FeelingId = req.body.FeelingId;
