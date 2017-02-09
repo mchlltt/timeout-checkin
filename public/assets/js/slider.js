@@ -41,6 +41,7 @@ $('#feeling-submit').on('click', function () {
         $('.questions').slick('slickNext');
     });
 });
+
 $('#resource-category-submit').on('click', function () {
     //Empty DOM from previous Ajax Calls to account for user navigating back
     $('#resTitle').empty();
@@ -52,41 +53,32 @@ $('#resource-category-submit').on('click', function () {
     if (selection === undefined) {
         return;
     }
-    console.log('Selection Value Below: ');
-    console.log(selection);
     var feelingSelection = $('input:radio[name=feeling]:checked').val();
-    var resource;
+    var ResourceId;
     //Ajax request for data
     $.get('/api/resources/' + selection, function (data) {
-        console.log(data);
         //For Our DB Selection
-        var keys = Object.keys(data);
-        key = Math.ceil(Math.random() * keys.length - 1);
-        // resource = data[key].id;
+        var resource = data[0]; 
+        ResourceId = resource.id;
         if (selection === '3') {
-            $('#resTitle').html('<h1 class="resMain">' + data.name + '</h1>');
-            $('#resContent').html('<h1 class="resQuote">' + data.content + '</h1>');
+            $('#resTitle').html('<h1 class="resMain">' + resource.name + '</h1>');
+            $('#resContent').html('<h1 class="resQuote">' + resource.content + '</h1>');
         } else if (selection === '1') {
-            $('#resTitle').html('<h1 class="resMain">' + data.name + '</h1>');
-            $('#resContent').html('<iframe width="100%" height="100%"  src = "https://www.youtube.com/embed/' + data.content + '" > < /iframe>');
+            $('#resTitle').html('<h1 class="resMain">' + resource.name + '</h1>');
+            $('#resContent').html('<iframe width="100%" height="100%"  src = "https://www.youtube.com/embed/' + resource.content + '" > < /iframe>');
         } else if (selection === '4') {
-            console.log(data);
-            //Could Add Image Thumbnail
-            // var img = data.media[1];
-            // console.log(img);
-            // <img src="' + img + '"></img>
-            $('#resTitle').html('<h1 class="news resMain">' + data.title + '</h1><p class="news abstract">' + data.abstract + '</p><h3 class="news url">' + data.url + '</h3>');
+            $('#resTitle').html('<h1 class="news resMain">' + resource.title + '</h1><p class="news abstract">' + resource.abstract + '</p><h3 class="news url">' + resource.url + '</h3>');
         } else if (selection === '2') {
-            $('#resTitle').html('<h1 class="resMain">' + data[key].name + '</h1>');
-            $('#resContent').html('<h1 class="resQuote">' + data[key].content + '</h1>');
+            $('#resTitle').html('<h1 class="resMain">' + resource.name + '</h1>');
+            $('#resContent').html('<h1 class="resQuote">' + resource.content + '</h1>');
         } else {
-            $('#resources').append('<h2>' + data[key].name + '</h2><h3>' + data[key].content + '</h3>');
+            $('#resources').append('<h2>' + resource.name + '</h2><h3>' + resource.content + '</h3>');
         }
         $('.questions').slick('slickNext');
     }).done(function () {
         $.post('/api/new', {
             FeelingId: feelingSelection,
-            ResourceId: resource
+            ResourceId: ResourceId
         }, function (data) {
             console.log(data);
         });
