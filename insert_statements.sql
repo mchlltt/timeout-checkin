@@ -287,12 +287,12 @@ values ('relax'),
 insert into Resources (name, content, embed, ResourceCategoryId)
 values ('Havasupai Indian Waterfall Relaxation', 'https://www.youtube.com/watch?v=PYs5zyM9zk8', 'https://www.youtube.com/embed/PYs5zyM9zk8', 1),
 	   ('Thunder, Rain, and Flowing Stream', 'https://www.youtube.com/watch?v=PvdOyWKQfO8','https://www.youtube.com/embed/PvdOyWKQfO8', 1),
-	   ('Flowers', 'https://www.youtube.com/watch?v=apkexltdO-0', 'https://www.youtube.com/embed/apkexltdO-0', 1);
+	   ('HD Flowers', 'https://www.youtube.com/watch?v=apkexltdO-0', 'https://www.youtube.com/embed/apkexltdO-0', 1);
 	  
 # insert resource for category distract
 insert into Resources (name, content, embed, ResourceCategoryId)
 values ('Monteray Bay Aquarium Livestream', 'https://www.montereybayaquarium.org/animals-and-experiences/live-web-cams', null, 2),
-	   ('Hedgehogs Go Tubing', 'http://www.animalplanet.com/tv-shows/too-cute/videos/hedgehogs-go-tubing/','http://www.animalplanet.com/embed?page=1113"', 2);
+	   ('Hedgehogs Go Tubing', 'http://www.animalplanet.com/tv-shows/too-cute/videos/hedgehogs-go-tubing/','https://www.youtube.com/embed/KePTJYQZwiw', 2);
 	  
 # insert resource for category inspire
 insert into Resources (name, content, embed, ResourceCategoryId)

@@ -6,21 +6,13 @@
     font-size: inherit;
 }
 
-.questions, .slick-track, .slide, .slick-list {
-    min-height: 65vh;
-    max-height: 100%;
-}
-
 .slick-slide {
     display: flex !important;
     flex-direction: column;
     justify-content: center;
 }
 
-label::before {
-    display: none;
-}
-
+label::before,
 [type="radio"]:checked + label:after,
 [type="radio"]:checked + label:before,
 [type="radio"].with-gap:checked + label:after,
@@ -57,15 +49,15 @@ label {
 }
 
 main {
-    margin-top: 9vh;
-    margin-bottom: 10vh;
-    height: auto;
-    max-height: 70vh;
+    margin: 5vh 0 2vh 0 !important;
     overflow-x: hidden;
-
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+    height: 85vh;
+    min-height: 550px;
+}
+
+.slick-dots {
+    height: 20px;
 }
 
 .col-xs-12 {
@@ -75,44 +67,28 @@ main {
 
 body {
     overflow-x: hidden;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-footer {
-    height: auto;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    padding: 0;
-    margin-top: 5vh;
-    clear: both;
+    justify-content: space-between;
+    height: 100vh;
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.row {
-    margin-bottom: 0;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
 }
 
 html {
-    height: 100%;
-    position: relative;
+    height: 100vh;
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+    position: relative;
+    margin: 0;
 }
 
 .footer-copyright p {
     margin: 0;
 }
 
-.navbar-fixed-bottom {
+.navbar-fixed-top, .page-footer {
     position: relative;
+    margin: 0;
 }
 
 * {
@@ -123,4 +99,54 @@ html {
     display: flex;
     align-content: center;
     flex-direction: column;
+}
+
+nav ul a {
+    font-size: 1.8rem;
+}
+
+nav .brand-logo {
+    font-size: 2.8rem;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+.btn-large {
+    margin-top: 10px;
+}
+
+main .col-xs-12 {
+    height: 100%;
+    display: block;
+}
+
+.title {
+    font-size: 6rem;
+}
+
+h5 {
+    font-size: 3rem;
+}
+
+.left-button {
+    margin-right: 10px;
+}
+
+.questions, .slick-track, .slide, .slick-list {
+    min-height: 500px;
+    height: 90%;
+}
+
+@media only screen and (max-width: 500px) {
+    h5 {
+        font-size: 2rem;
+    }
+
+    iframe {
+        width: 310px;
+        height: 310px;
+    }
 }

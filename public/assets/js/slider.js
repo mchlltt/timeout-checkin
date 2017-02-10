@@ -1,6 +1,11 @@
 $('#start-button').on('click', function () {
     $('.questions').slick('slickNext');
 });
+
+$('.back-button').on('click', function() {
+    $('.questions').slick('slickPrev');
+});
+
 $('#super-category-submit').on('click', function () {
     var selection = $('input:radio[name=super-category]:checked').val();
     if (selection === undefined) {
@@ -64,11 +69,11 @@ $('#resource-category-submit').on('click', function () {
         ResourceId = resource.id;
 
         if (resource.embed) {
-            $('#resource-title').empty().append('<h1><a href="' + resource.content + '">' + resource.name +'</a></h1>');
+            $('#resource-title').empty().append('<h1><a href="' + resource.content + '" class="white-text" target="_blank">' + resource.name +'</a></h1>');
             $('#resource-content').empty().append('<iframe width="400px" height="300px" src="' + resource.embed + '"></iframe>');
         } else {
             $('#resource-title').empty();
-            $('#resource-content').empty().append('<h1><a href="' + resource.content + '">' + resource.name +'</a></h1>');
+            $('#resource-content').empty().append('<h1><a href="' + resource.content + '" class="white-text" target="_blank">' + resource.name +'</a></h1>');
         }
 
         $('.questions').slick('slickNext');
@@ -77,10 +82,12 @@ $('#resource-category-submit').on('click', function () {
         // Get feeling ID from previous page.
         var FeelingId = $('input:radio[name=feeling]:checked').val();
 
-        // Post resource ID and feeling ID.
-        $.post('/api/new', {
-            FeelingId: FeelingId,
-            ResourceId: ResourceId
-        });
+        if (ResourceId && FeelingId) {
+            // Post resource ID and feeling ID.
+            $.post('/api/new', {
+                FeelingId: FeelingId,
+                ResourceId: ResourceId
+            });
+        }
     });
 });
