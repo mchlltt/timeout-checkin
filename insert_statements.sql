@@ -284,25 +284,25 @@ values ('relax'),
 	   ('cope');
 
 # insert resource for category relax
-insert into Resources (name, content, ResourceCategoryId)
-values ('waterfall', 'PYs5zyM9zk8', 1),
-	   ('rain', 'PvdOyWKQfO8', 1),
-	   ('flowers', 'apkexltdO-0', 1);
+insert into Resources (name, content, embed, ResourceCategoryId)
+values ('Havasupai Indian Waterfall Relaxation', 'https://www.youtube.com/watch?v=PYs5zyM9zk8', 'https://www.youtube.com/embed/PYs5zyM9zk8', 1),
+	   ('Thunder, Rain, and Flowing Stream', 'https://www.youtube.com/watch?v=PvdOyWKQfO8','https://www.youtube.com/embed/PvdOyWKQfO8', 1),
+	   ('Flowers', 'https://www.youtube.com/watch?v=apkexltdO-0', 'https://www.youtube.com/embed/apkexltdO-0', 1);
 	  
 # insert resource for category distract
-insert into Resources (name, content, ResourceCategoryId)
-values ('monterey bay aquarium', 'https://www.montereybayaquarium.org/animals-and-experiences/live-web-cams', 2),
-	   ('animal planet', 'http://www.animalplanet.com/tv-shows/too-cute/videos/hedgehogs-go-tubing/', 2);
+insert into Resources (name, content, embed, ResourceCategoryId)
+values ('Monteray Bay Aquarium Livestream', 'https://www.montereybayaquarium.org/animals-and-experiences/live-web-cams', null, 2),
+	   ('Hedgehogs Go Tubing', 'http://www.animalplanet.com/tv-shows/too-cute/videos/hedgehogs-go-tubing/','http://www.animalplanet.com/embed?page=1113"', 2);
 	  
 # insert resource for category inspire
-insert into Resources (name, content, ResourceCategoryId)
-values ('how nature chanes the brain', 'https://well.blogs.nytimes.com/2015/07/22/how-nature-changes-the-brain/?_r=0', 3),
-	   ('ted', 'https://www.ted.com/talks/guy_winch_the_case_for_emotional_hygiene', 3);
+insert into Resources (name, content, embed, ResourceCategoryId)
+values ('How Nature Changes the Brain', 'https://well.blogs.nytimes.com/2015/07/22/how-nature-changes-the-brain/?_r=0', null, 3),
+	   ('The Case For Emotional Hygiene', 'https://www.ted.com/talks/guy_winch_the_case_for_emotional_hygiene', 'https://embed.ted.com/talks/guy_winch_the_case_for_emotional_hygiene', 3);
 	  
 # insert resource for category cope
-insert into Resources (name, content, ResourceCategoryId)
-values ('self care coping and healing', 'https://www.takebackthetech.net/be-safe/self-care-coping-and-healing', 4),
-	   ('radical self care', 'http://www.elephantjournal.com/2014/09/radical-self-care-101/', 4);
+insert into Resources (name, content, embed, ResourceCategoryId)
+values ('Self-care, Coping, and Healing', 'https://www.takebackthetech.net/be-safe/self-care-coping-and-healing', null, 4),
+	   ('Radical Self Care', 'http://www.elephantjournal.com/2014/09/radical-self-care-101/', null, 4);
 
 # insert data into transactions for testing, etc
 insert into Transactions (FeelingId, ResourceId)

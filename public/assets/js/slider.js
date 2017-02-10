@@ -63,14 +63,12 @@ $('#resource-category-submit').on('click', function () {
         var resource = data[whichResult];
         ResourceId = resource.id;
 
-        switch(selection) {
-            case '1':
-                $('#resource-title').text(resource.name);
-                $('#resource-content').empty().append('<iframe width="300px" height="300px" src="https://www.youtube.com/embed/' + resource.content + '"></iframe>');
-                break;
-            default:
-                $('#resource-content').empty().append('<h1><a href="' + resource.content + '">' + resource.name +'</a></h1>');
-                break;
+        if (resource.embed) {
+            $('#resource-title').empty().append('<h1><a href="' + resource.content + '">' + resource.name +'</a></h1>');
+            $('#resource-content').empty().append('<iframe width="400px" height="300px" src="' + resource.embed + '"></iframe>');
+        } else {
+            $('#resource-title').empty();
+            $('#resource-content').empty().append('<h1><a href="' + resource.content + '">' + resource.name +'</a></h1>');
         }
 
         $('.questions').slick('slickNext');

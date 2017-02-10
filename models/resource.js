@@ -29,6 +29,10 @@ module.exports = function(sequelize, DataTypes) {
                 }
             }
         },
+        embed: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,
