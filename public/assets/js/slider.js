@@ -15,7 +15,7 @@ $('#super-category-submit').on('click', function() {
         $('#categories-options').empty();
         // Use the data to generate the next set of options.
         data.forEach(function(datum) {
-            $('#categories-options').append('<input name="category" type="radio" id="category-' + datum.id + '" value="' + datum.id + '" />').append('<label for="category-' + datum.id + '" class="white-text">' + datum.name + '</label>')
+            $('#categories-options').append('<input name="category" type="radio" id="category-' + datum.id + '" value="' + datum.id + '" />').append('<label for="category-' + datum.id + '" class="white-text">' + datum.name + '</label>');
         });
         $('.questions').slick('slickNext');
     });

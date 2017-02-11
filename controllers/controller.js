@@ -2,6 +2,7 @@
 var db = require('../models');
 //including request for API calls
 var request = require('request');
+var Sequelize = require('sequelize');
 
 module.exports = function(app) {
     // Import popularity service
@@ -11,6 +12,27 @@ module.exports = function(app) {
         // returns object of resource category ids as keys and popularity (in decimal) as values
         popularityService(req, res, db);
     });
+
+    app.get('/data', function(req, res) {
+        res.render('data');
+    });
+
+    app.get('/api/resource-category-count', function(req, res) {
+        db.Transaction.findAll({
+            attributes: ['ResourceCategoryId', [Sequelize.fn('COUNT', Sequelize.col('ResourceCategory.id')), 'categorycount']],
+            include: [{ attributes: [], model: db.ResourceCategory }],
+            group: ['Transaction.id']
+        }).then(function(data) {
+            function filterById(id) {
+                return data.filter(function(d) {
+                    return d.ResourceCategoryId === id;
+                }).length;
+            }
+            whatever = [filterById(1), filterById(2), filterById(3), filterById(4)];
+            res.json(whatever);
+        });
+    });
+
     // GET route which returns the index.
     app.get('/', function(req, res) {
         var questions = {};
