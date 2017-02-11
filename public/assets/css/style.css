@@ -171,3 +171,39 @@ nav ul a {
         font-size: 4rem;
     }
 }
+
+/*SECTION FOR DYNAMIC RESOURCES GENERATED ======================================================*/
+/*The below option uses a simple wrapper an alternative would be to use JQuery as the following: 
+when the page loads all videos are looked at and their aspect ratio is saved. 
+Once right away, and whenever the window is resized, 
+all the videos are resized to fill the available width and maintain their aspect ratio.*/
+/*To preserve video aspect ratio and allow iframe to fit the width! */
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25% ; /* perserves 16:9 aspect ratio */
+    padding-top: 25px;
+    height: 0;
+}.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 15px 15px 0px 15px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    box-shadow:3px 3px 3px black;
+}
+
+#resTitle {
+        color: white;
+        max-width: 95% ;
+    }
+    #resContent {
+        color: white;
+        max-width: 95% ;
+    }
+    #resources {
+        color: white;
+        max-width: 95% ;
+    }
