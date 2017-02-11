@@ -20,6 +20,7 @@ $('#super-category-submit').on('click', function() {
         $('.questions').slick('slickNext');
     });
 });
+
 $('#category-submit').on('click', function() {
     var selection = $('input:radio[name=category]:checked').val();
     if (selection === undefined) {
@@ -34,11 +35,17 @@ $('#category-submit').on('click', function() {
         $('.questions').slick('slickNext');
     });
 });
+
 $('#feeling-submit').on('click', function() {
     var selection = $('input:radio[name=feeling]:checked').val();
     if (selection === undefined) {
         return;
     }
+
+    var feelingText = $('input:radio[name=feeling]:checked + label').text();
+
+    $('#feeling-display').text('You are feeling ' + feelingText + '.');
+
     $.get('/api/resource-category-popularity/' + selection).done(function(data) {
         Object.keys(data).forEach(function(key) {
             $('#percentage-' + key).empty().append(' ' + Math.round(data[key] * 100) + '%');
