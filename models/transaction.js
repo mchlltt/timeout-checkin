@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 Transaction.belongsTo(models.Feeling);
-                Transaction.belongsTo(models.Resource)
+                Transaction.belongsTo(models.ResourceCategory);
             }
         }
     });

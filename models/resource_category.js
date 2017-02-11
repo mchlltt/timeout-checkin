@@ -14,7 +14,9 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 isIn: {
-                    args: [['Distract', 'Inspire', 'Relax', 'Cope']],
+                    args: [
+                        ['Distract', 'Inspire', 'Relax', 'Cope']
+                    ],
                     msg: 'Must be Distract, Inspire, Relax, or Cope'
                 }
             }
@@ -28,12 +30,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
-        }
-    }, {
-        classMethods: {
-            associate: function(models) {
-                ResourceCategory.hasMany(models.Resource)
-            }
         }
     });
     return ResourceCategory;
