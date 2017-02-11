@@ -283,6 +283,28 @@ values ('relax'),
 	   ('inspire'),
 	   ('cope');
 
+# insert resource for category relax
+insert into Resources (name, embed, ResourceCategoryId)
+values ('Havasupai Indian Waterfall Relaxation', 'PYs5zyM9zk8', 1),
+	   ('Thunder, Rain, and Flowing Stream', 'PvdOyWKQfO8', 1),
+	   ('HD Flowers', 'apkexltdO-0', 1);
+
+# insert resource for category distract
+insert into Resources (name, embed, ResourceCategoryId)
+values ('Monteray Bay Aquarium Livestream', 'KePTJYQZwiw', 2),
+	   ('Hedgehogs Go Tubing', 'PvdOyWKQfO8', 2);
+
+# insert resource for category inspire
+insert into Resources (name, embed, ResourceCategoryId)
+values ('How Nature Changes the Brain', 'KePTJYQZwiw', 3),
+	   ('The Case For Emotional Hygiene', 'PvdOyWKQfO8', 3);
+
+# insert resource for category cope
+insert into Resources (name, embed, ResourceCategoryId)
+values ('Self-care, Coping, and Healing', 'KePTJYQZwiw', 4),
+	   ('Radical Self Care', 'PvdOyWKQfO8', 4);
+
+
 # insert data into transactions for testing, etc
 insert into Transactions (FeelingId, ResourceCategoryId)
 values (80, 1),
