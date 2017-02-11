@@ -41,7 +41,8 @@ $('#feeling-submit').on('click', function() {
     }
     $.get('/api/resource-category-popularity/' + selection).done(function(data) {
         Object.keys(data).forEach(function(key) {
-            $('#percentage-' + key).empty().append(' ' + Math.round(data[key] * 100) + '%');
+            var percentage = Math.round(data[key] * 100) || 0;
+            $('#label-' + key).attr('data-tooltip', percentage + '% of people chose this').tooltip();
         });
         $('.questions').slick('slickNext');
     });

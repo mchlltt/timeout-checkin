@@ -64,10 +64,10 @@
                         <h5 class="light white-text">Select the category of the resource you would like to get.</h5>
                         <div class="options" id="resource-categories-options">
                             {{#each resourceCategories}}
-                                <input name="resource-category" type="radio" id="resource-category-{{id}}"
-                                       value="{{id}}"/>
-                                <label for="resource-category-{{id}}" class="white-text" id="label-{{id}}">{{name}}
-                                    <span id="percentage-{{id}}">0%</span></label>
+                                <input name="resource-category" type="radio" id="resource-category-{{id}}" value="{{id}}"/>
+                                <label for="resource-category-{{id}}" class="white-text tooltipped" id="label-{{id}}" data-position="right" data-delay="50">
+                                    {{name}}
+                                </label>
                             {{/each}}
                         </div>
                     </form>
