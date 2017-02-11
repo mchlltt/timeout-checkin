@@ -13,14 +13,15 @@ module.exports = function(req, res, db) {
 
 function startResponding() {
     feelingId = parseInt(request.params.feeling_id);
-    getFeelingCategories().then(function(result) {
-        getFeelingsForFeelingCategory(result);
-        return getFeelingsForSuperFeelingCategory(result);
-    }).then(function(result) {
-        return setSuperCategoryLevel(result);
-    }).then(function() {
-        return findResponse();
-    });
+    getFeelingCategories()
+        .then(function(result) {
+            getFeelingsForFeelingCategory(result);
+            return getFeelingsForSuperFeelingCategory(result);
+        }).then(function(result) {
+            return setSuperCategoryLevel(result);
+        }).then(function() {
+            return findResponse();
+        });
 }
 
 function getFeelingCategories() {
@@ -60,17 +61,18 @@ function setSuperCategoryLevel(result) {
 }
 
 function findResponse() {
-    findTransactionByFeelingId().then(function(result) {
-        return setLowLevel(result);
-    }).then(function(result) {
-        return setMidLevel(result);
-    }).then(function(result) {
-        return setHighLevel(result);
-    }).then(function() {
-        return whichLevel();
-    }).then(function(result) {
-        return setResponse(result);
-    });
+    findTransactionByFeelingId()
+        .then(function(result) {
+            return setLowLevel(result);
+        }).then(function(result) {
+            return setMidLevel(result);
+        }).then(function(result) {
+            return setHighLevel(result);
+        }).then(function() {
+            return whichLevel();
+        }).then(function(result) {
+            return setResponse(result);
+        });
 }
 
 function findTransactionByFeelingId() {
