@@ -42,57 +42,59 @@ $('#feeling-submit').on('click', function() {
         return;
     }
 
+    // Update title text on next slide.
     var feelingText = $('input:radio[name=feeling]:checked + label').text();
-
-    $('#feeling-display').text('You are feeling ' + feelingText + '.');
+    $('#feeling-display').append('You are feeling <span class="feeling-text">' + feelingText + '.</span>');
 
     $.get('/api/resource-category-popularity/' + selection).done(function(data) {
-        Object.keys(data).forEach(function(key) {
-            var percentage = Math.round(data[key] * 100) || 0;
-            $('#label-' + key).attr('data-tooltip', percentage + '% of people chose this').tooltip();
+        // For each resource category label,
+        ['1', '2', '3', '4'].forEach(function(item) {
+            var percentage = Math.round(data[item] * 100);
+
+            if (percentage) {
+                $('#label-' + item[0]).attr('data-tooltip', percentage + '% of people feeling ' + feelingText + ' chose this.').tooltip();
+            } else {
+                $('#label-' + item[0]).attr('data-tooltip', '0% of people feeling ' + feelingText + ' chose this.').tooltip();
+            }
         });
+
         $('.questions').slick('slickNext');
     });
 });
 
 $('#resource-category-submit').on('click', function() {
     // Get resource category selection.
-    var selection = $('input:radio[name=resource-category]:checked').val();
+    var ResourceCategoryId = $('input:radio[name=resource-category]:checked').val();
+
     // Get feeling ID from previous page.
     var FeelingId = $('input:radio[name=feeling]:checked').val();
 
     // Must select value
-    if (selection === undefined) {
+    if (ResourceCategoryId === undefined) {
         return;
     }
 
-    if (selection && FeelingId) {
+    if (ResourceCategoryId && FeelingId) {
         // Post resource ID and feeling ID.
         $.post('/api/new', {
             FeelingId: FeelingId,
-            ResourceCategoryId: selection
+            ResourceCategoryId: ResourceCategoryId
         });
     }
 
-    // // AJAX request for data
-    // $.get('/api/resources/' + selection, function(data) {
+    // AJAX request for data
+    $.get('/api/resources/' + ResourceCategoryId, function(data) {
 
-    //     // Get the length of the data returned.
-    //     var numberResults = data.length;
-    //     var whichResult = Math.floor(Math.random() * numberResults);
+        // Get the length of the data returned.
+        var numberResults = data.length;
+        var whichResult = Math.floor(Math.random() * numberResults);
 
-    //     var resource = data[whichResult];
-    //     ResourceId = resource.id;
+        var resource = data[whichResult];
 
-    //     if (resource.embed) {
-    //         $('#resource-title').empty().append('<h1><a href="' + resource.content + '" class="white-text" target="_blank">' + resource.name + '</a></h1>');
-    //         $('#resource-content').empty().append('<iframe width="400px" height="300px" src="' + resource.embed + '"></iframe>');
-    //     } else {
-    //         $('#resource-title').empty();
-    //         $('#resource-content').empty().append('<h1><a href="' + resource.content + '" class="white-text" target="_blank">' + resource.name + '</a></h1>');
-    //     }
+        $('#resource-title').empty().append('<h1><a href="https://www.youtube.com/watch?v=' + resource.embed + '" class="white-text" target="_blank">' + resource.name + '</a></h1>');
+        $('#resource-content').empty().append('<iframe width="400px" height="300px" src="https://www.youtube.com/embed/' + resource.embed + '"></iframe>');
 
-    //     $('.questions').slick('slickNext');
+        $('.questions').slick('slickNext');
 
-    // });
+    });
 });

@@ -283,27 +283,33 @@ values ('relax'),
 	   ('inspire'),
 	   ('cope');
 
-# insert resource for category relax
+# insert resources
+
+
+
 insert into Resources (name, embed, ResourceCategoryId)
 values ('Havasupai Indian Waterfall Relaxation', 'PYs5zyM9zk8', 1),
-	   ('Thunder, Rain, and Flowing Stream', 'PvdOyWKQfO8', 1),
-	   ('HD Flowers', 'apkexltdO-0', 1);
-
-# insert resource for category distract
-insert into Resources (name, embed, ResourceCategoryId)
-values ('Monteray Bay Aquarium Livestream', 'KePTJYQZwiw', 2),
-	   ('Hedgehogs Go Tubing', 'PvdOyWKQfO8', 2);
-
-# insert resource for category inspire
-insert into Resources (name, embed, ResourceCategoryId)
-values ('How Nature Changes the Brain', 'KePTJYQZwiw', 3),
-	   ('The Case For Emotional Hygiene', 'PvdOyWKQfO8', 3);
-
-# insert resource for category cope
-insert into Resources (name, embed, ResourceCategoryId)
-values ('Self-care, Coping, and Healing', 'KePTJYQZwiw', 4),
-	   ('Radical Self Care', 'PvdOyWKQfO8', 4);
-
+('Thunder, Rain, and Flowing Stream', 'PvdOyWKQfO8', 1),
+('Mindfulness Relaxing Music for Stress Relief','VnQ8AhkX7bQ','1'),
+('Time Lapse with Sunsets, Clouds, Stars','8gD_9WPPFb4','1'),
+('Waterfalls of the World','jO-EBdHu5Yw','1'),
+('Guided Sleep Meditation Talkdown','8TDcGYmEgyM','1'),
+('Sunset','f61PbjjVuF0','1'),
+('The Most Satisfying Video In The World','IjeKw0B8PG8','2'),
+('Panda Cub','CpK1lZJmbJY','2'),
+('Cute Baby Animals','HGXiUpfHfTY','2'),
+('Hedgehogs Go Tubing!','KePTJYQZwiw','2'),
+('Top 10 Waterslides','0hYlvicxP40','2'),
+('Why Do We Fall','mgmVOuLgFB0','3'),
+('Emotional First Aid','F2hc2FLOdhI','3'),
+('Why we do what we do','Cpc-t-Uwv1I','3'),
+('Make An Impact','pb7_YJp9bVA','3'),
+('The Greatest - Muhammad Ali Inspirational','V2EfL1j4KYE','3'),
+('Self Care Tips','VamqK8P3WfI','4'),
+('Igniting a self-care revolution','YsLy15ypyTc','4'),
+('How to make stress your friend','RcGyVTAoXEU','4'),
+('How mindfulness meditation redefines pain, happiness & satisfaction','JVwLjC5etEQ','4'),
+('Tips for Starting a Healthy Lifestyle','0aNNYEUARAk','4');
 
 # insert data into transactions for testing, etc
 insert into Transactions (FeelingId, ResourceCategoryId)

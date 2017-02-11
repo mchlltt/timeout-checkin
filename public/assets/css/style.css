@@ -112,8 +112,9 @@ h5 {
     flex-direction: column;
 }
 
-#resource-content a:hover,
-#resource-title a:focus {
+#resource-title a:hover,
+#resource-title a:focus,
+.feeling-text {
     color: #ff9800 !important;
 }
 
