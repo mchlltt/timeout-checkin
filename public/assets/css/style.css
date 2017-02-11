@@ -136,7 +136,7 @@ h5 {
 }
 
 .navbar-fixed-top {
-    min-height: 56px;
+    height: 56px;
 }
 
 .footer-copyright p {
@@ -145,6 +145,7 @@ h5 {
 
 nav ul a {
     font-size: 1.8rem;
+    height: 56px;
 }
 
 .brand-logo {
