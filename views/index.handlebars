@@ -52,16 +52,16 @@
                     </form>
                     <div class="row center">
                         <a class="btn-large waves-effect waves-light orange back-button left-button">Back</a>
-                        <a id="feeling-submit" class="btn-large waves-effect waves-light orange">Next</a>
+                        <a id="feeling-submit" class="btn-large waves-effect waves-light orange">Submit</a>
                     </div>
                 </div>
             </div>
             <!-- resource category selection -->
             <div class="slide slick-carousel-item blue" id="resource-category">
                 <div class="container">
-                    <h1 class="title header center bold white-text">Need Finder</h1>
+                    <h1 class="title header center bold white-text" id="feeling-display"></h1>
                     <form class="center" action="#">
-                        <h5 class="light white-text">Select the category of the resource you would like to get.</h5>
+                        <h5 class="light white-text">What do you need right now?</h5>
                         <div class="options" id="resource-categories-options">
                             {{#each resourceCategories}}
                                 <input name="resource-category" type="radio" id="resource-category-{{id}}" value="{{id}}"/>
