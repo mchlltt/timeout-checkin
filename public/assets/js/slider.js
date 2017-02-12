@@ -102,3 +102,11 @@ $('#resource-category-submit').on('click', function() {
 
     });
 });
+
+// This function ensure that tooltips can also be removed by window resizing, in case the window is
+// large enough when the tooltips are added but then resized to be smaller.
+$(window).resize(function(){
+    if ($('#media-query').width() === 1 ) {
+        $('.tooltipped').tooltip('disable').tooltip('remove');
+    }
+});
