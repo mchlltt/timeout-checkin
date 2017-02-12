@@ -51,10 +51,14 @@ $('#feeling-submit').on('click', function() {
         ['1', '2', '3', '4'].forEach(function(item) {
             var percentage = Math.round(data[item] * 100);
 
-            if (percentage) {
-                $('#label-' + item[0]).attr('data-tooltip', percentage + '% of people feeling ' + feelingText + ' chose this.').tooltip();
+            if ($('#media-query').width() === 2) {
+                if (percentage) {
+                    $('#label-' + item[0]).attr('data-tooltip', percentage + '% of people feeling ' + feelingText + ' chose this.').tooltip('enable');
+                } else {
+                    $('#label-' + item[0]).attr('data-tooltip', '0% of people feeling ' + feelingText + ' chose this.').tooltip('enable');
+                }
             } else {
-                $('#label-' + item[0]).attr('data-tooltip', '0% of people feeling ' + feelingText + ' chose this.').tooltip();
+                $('.tooltipped').tooltip('disable').tooltip('remove');
             }
         });
 
