@@ -166,6 +166,11 @@ nav ul a {
     margin: 0 !important;
 }
 
+#media-query {
+    display: none;
+    width: 2px;
+}
+
 /* Media queries */
 @media only screen and (max-width: 500px) {
     h5 {
@@ -183,5 +188,9 @@ nav ul a {
 
     .title {
         font-size: 4rem;
+    }
+
+    #media-query {
+        width: 1px;
     }
 }
