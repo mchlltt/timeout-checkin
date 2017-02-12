@@ -1,8 +1,5 @@
-# Need Finder
+# time out, check in
 A web application about taking time for yourself.
-
-##### *Please note that the application is currently under development and may not function as intended either if run locally or viewed on Heroku. We appreciate your patience and encourage you to check back soon!*
-
 
 ## Getting Started
 
@@ -11,7 +8,7 @@ A web application about taking time for yourself.
 - Node.js
 
 ### Installing
-To view the site as a user, you can view it on Heroku at <http://need-finder.herokuapp.com>.
+To view the site as a user, you can view it on Heroku at <http://time-out-check-in.herokuapp.com>.
  
 If you would like to run the application locally, please ensure that you have installed the Prerequisites, then take the following steps:
 - Clone this repository to your local machine with `git clone`
@@ -21,7 +18,9 @@ If you would like to run the application locally, please ensure that you have in
 - The application will be running at `localhost:3000/`
 
 ## Built with
-- Bootstrap (Front-end framework)
+- Materialize (Front-end framework)
+- Slick.js (Carousel plug-in)
+- Chart.js (HTML5 charts)
 - Express.js (Server framework)
 - Handlebars (Templating engine)
 - Heroku (Cloud platform)
