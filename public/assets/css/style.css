@@ -136,8 +136,8 @@ h5 {
     margin: 0;
 }
 
-.navbar-fixed-top {
-    height: 56px;
+.navbar-fixed-top, .nav-wrapper {
+    height: 56px !important;
 }
 
 .footer-copyright p {
@@ -151,6 +151,19 @@ nav ul a {
 
 .brand-logo {
     font-size: 2.8rem;
+}
+
+/* Data Viz */
+.chart-wrapper, .data-viz {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#myChart {
+    height: 80% !important;
+    margin: 0 !important;
 }
 
 /* Media queries */
