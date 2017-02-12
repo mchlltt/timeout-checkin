@@ -16,9 +16,6 @@ a {
 body {
     overflow-x: hidden;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     height: 100vh;
     width: 100%;
 }
@@ -34,7 +31,7 @@ main {
     margin: 5vh 0 2vh 0 !important;
     overflow-x: hidden;
     width: 100%;
-    height: 85vh;
+    height: 80vh;
     min-height: 550px;
 }
 
@@ -42,6 +39,7 @@ main .col-xs-12 {
     height: 100%;
     display: block;
 }
+
 
 /* Slider */
 
@@ -51,7 +49,10 @@ main .col-xs-12 {
     justify-content: center;
 }
 
-.questions, .slick-track, .slide, .slick-list {
+.questions,
+.slick-track,
+.slide,
+.slick-list {
     min-height: 500px;
     height: 90%;
 }
@@ -60,17 +61,18 @@ main .col-xs-12 {
     outline: none;
 }
 
+
 /* Slider content */
 
 label::before,
-[type="radio"]:checked + label:after,
-[type="radio"]:checked + label:before,
-[type="radio"].with-gap:checked + label:after,
-[type="radio"].with-gap:checked + label:before {
+[type="radio"]:checked+label:after,
+[type="radio"]:checked+label:before,
+[type="radio"].with-gap:checked+label:after,
+[type="radio"].with-gap:checked+label:before {
     display: none;
 }
 
-input[type="radio"]:checked + label {
+input[type="radio"]:checked+label {
     color: #ff9800 !important;
 }
 
@@ -79,8 +81,8 @@ label {
     font-weight: 400;
 }
 
-[type="radio"]:not(:checked) + label,
-[type="radio"]:checked + label {
+[type="radio"]:not(:checked)+label,
+[type="radio"]:checked+label {
     font-size: 28px;
     margin: 10px;
 }
@@ -130,13 +132,17 @@ h5 {
     height: 20px;
 }
 
+
 /* Header/Footer  */
-.navbar-fixed-top, .page-footer {
+
+.navbar-fixed-top,
+.page-footer {
     position: relative;
     margin: 0;
 }
 
-.navbar-fixed-top, .nav-wrapper {
+.navbar-fixed-top,
+.nav-wrapper {
     height: 56px !important;
 }
 
@@ -153,17 +159,18 @@ nav ul a {
     font-size: 2.8rem;
 }
 
-/* Data Viz */
-.chart-wrapper, .data-viz {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.data-viz {
+    display: table;
+    width: 100%;
+    height: 65vh;
+    min-height: 0px;
 }
 
 #myChart {
     height: 80% !important;
     margin: 0 !important;
+    padding-top: 25px;
+    display: table-row;
 }
 
 #media-query {
@@ -171,26 +178,30 @@ nav ul a {
     width: 2px;
 }
 
+
 /* Media queries */
+
 @media only screen and (max-width: 500px) {
     h5 {
         font-size: 2rem;
     }
-
     iframe {
         width: 310px;
         height: 310px;
     }
-
     .brand-logo {
         font-size: 2rem;
     }
-
     .title {
         font-size: 4rem;
     }
-
     #media-query {
         width: 1px;
+    }
+}
+
+@media only screen and (min-height: 1000px) {
+    .data-viz {
+        height: 75vh;
     }
 }

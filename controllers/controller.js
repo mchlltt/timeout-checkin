@@ -3,10 +3,10 @@ var db = require('../models');
 //including request for API calls
 var request = require('request');
 var Sequelize = require('sequelize');
+// Import popularity service
+var popularityService = require('./popularity_service');
 
 module.exports = function(app) {
-    // Import popularity service
-    var popularityService = require('./popularity_service');
     // GET route for returning popularity.
     app.get('/api/resource-category-popularity/:feeling_id', function(req, res) {
         // returns object of resource category ids as keys and popularity (in decimal) as values
@@ -107,7 +107,7 @@ module.exports = function(app) {
         });
     });
 
-    app.get('*',function (req, res) {
+    app.get('*', function(req, res) {
         res.redirect('/');
     });
 };
