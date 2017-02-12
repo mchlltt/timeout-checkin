@@ -1,20 +1,9 @@
 {
     "development": {
-        "username": "root",
-        "password": null,
-        "database": "needs_db",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
-    },
-    "test": {
-        "username": "root",
-        "password": null,
-        "database": "needs_db",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
-    },
-    "production": {
-        "use_env_variable": "JAWSDB_URL",
+        "username": "xydidnut231ywur9",
+        "password": "cafnsv8ikfcpbklu",
+        "database": "sz31ut18wctu4ocd",
+        "host": "ryvdxs57afyjk41z.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         "dialect": "mysql"
     }
 }

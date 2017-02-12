@@ -44,7 +44,7 @@ $('#feeling-submit').on('click', function() {
 
     // Update title text on next slide.
     var feelingText = $('input:radio[name=feeling]:checked + label').text();
-    $('#feeling-display').append('You are feeling <span class="feeling-text">' + feelingText + '.</span>');
+    $('#feeling-display').empty().append('You are feeling <span class="feeling-text">' + feelingText + '.</span>');
 
     $.get('/api/resource-category-popularity/' + selection).done(function(data) {
         // For each resource category label,

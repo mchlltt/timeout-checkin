@@ -1,3 +1,5 @@
+CREATE DATABASE needs_db;
+
 USE needs_db;
 
 insert into FeelingSuperCategories (name)
