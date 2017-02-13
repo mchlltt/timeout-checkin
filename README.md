@@ -14,7 +14,7 @@ To view the site as a user, you can view it on Heroku at <https://timeout-checki
 
 ### Installing
 If you would like to run the application locally, please ensure that you have installed the both Node.js and MySQL, then take the following steps:
-- Clone this repository to your local machine with `git clone http://github.com/mchlltt/need-finder.git`.
+- Clone this repository to your local machine with `git clone http://github.com/mchlltt/timeout-checkin.git`.
 - Install NPM dependencies by running `npm install` in the project directory.
 - If you use a MySQL username other than `root` or have a MySQL password, open `config/config.js` and update these values.
 - Create a database in MySQL called 'needs_db'.

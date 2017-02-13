@@ -1,21 +1,22 @@
 {
-  "name": "need-finder",
+  "name": "timeout-checkin",
   "version": "1.0.0",
-  "description": "A web app about taking time for yourself.",
+  "description": "A web application about taking time for yourself.",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mchlltt/need-finder.git"
+    "url": "git+https://github.com/mchlltt/timeout-checkin.git"
   },
-  "author": "",
+  "author": "Chris Brenner, Mich Elliott, Matt Tutak",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mchlltt/need-finder/issues"
+    "url": "https://github.com/mchlltt/timeout-checkin/issues"
   },
-  "homepage": "https://github.com/mchlltt/need-finder#readme",
+  "homepage": "https://github.com/mchlltt/timeout-checkin#readme",
   "dependencies": {
     "body-parser": "^1.16.0",
     "express": "^4.14.1",
