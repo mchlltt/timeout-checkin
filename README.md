@@ -8,14 +8,16 @@ A web application about taking time for yourself.
 - Node.js
 
 ### Installing
-To view the site as a user, you can view it on Heroku at <http://time-out-check-in.herokuapp.com>.
+To view the site as a user, you can view it on Heroku at <https://timeout-checkin.herokuapp.com>.
  
-If you would like to run the application locally, please ensure that you have installed the Prerequisites, then take the following steps:
-- Clone this repository to your local machine with `git clone`
+If you would like to run the application locally, please ensure that you have installed the prerequisites, then take the following steps:
+- Clone this repository to your local machine with `git clone`.
 - Install NPM dependencies by running `npm install` in the project directory.
 - If you use a MySQL username other than `root` or have a MySQL password, open `config/config.js` and update these values.
+- Create a database in MySQL called 'needs_db'.
 - Ensure that you are in the root project directory, then run `npm start`.
-- The application will be running at `localhost:3000/`
+- The application will be running at `localhost:3000/` and tables will be created in the database.
+- Run `source insert_statements.sql` in the project directory to load data into your database.
 
 ## Built with
 - Materialize (Front-end framework)
